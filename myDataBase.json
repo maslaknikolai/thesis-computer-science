@@ -1,0 +1,9 @@
+{
+    "users": [
+      {
+        "type": "admin",
+        "login": "test",
+        "code": "123"
+      }
+    ]
+}

@@ -39,11 +39,36 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'user'
+        },
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post' },
+          user: { url: '/api/auth/user', method: 'get' },
+          logout: false
+        }
+      }
+    }
+  },
+
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/index.js' }
+  ],
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
