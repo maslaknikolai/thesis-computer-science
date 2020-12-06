@@ -13,10 +13,10 @@ async function createRequestBody (formData) {
 }
 
 export default {
-  async store ($axios, formData) {
+  async store (axios, formData) {
     const requestBody = await createRequestBody(formData)
 
-    return $axios.post('/api/tasks', requestBody)
+    return axios.post('/api/teacher/tasks', requestBody)
       .catch((error) => {
         if (error.response && error.response.data && error.response.data.errors) {
           return Promise.reject(

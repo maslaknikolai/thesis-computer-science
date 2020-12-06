@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import TaskService from '~/services/tasks'
+import TasksService from '~/services/teacher/tasks'
 import TaskForm from '~/components/TaskForm/index.vue'
 
 export default {
@@ -47,7 +47,7 @@ export default {
     save (formData) {
       this.errors = null
       this.saving = true
-      TaskService.store(this.$axios, formData)
+      TasksService.store(this.$axios, formData)
         .then(() => {
           this.$router.push('/')
         })

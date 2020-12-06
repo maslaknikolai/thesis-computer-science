@@ -68,7 +68,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Задания',
+          title: 'В кабинет',
           to: '/'
         }
       ]

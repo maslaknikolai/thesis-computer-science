@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import schoolClassesService from '~/services/schoolClasses'
+import schoolClassesService from '~/services/teacher/schoolClasses'
 export default {
   data: () => ({
     loading: false,

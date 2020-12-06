@@ -1,10 +1,27 @@
 import db from '../dbProvider'
 
-function createUser (data) {
+function createTeacher (data) {
   return {
     uuid: data.uuid,
     login: data.login,
     type: data.type
+  }
+}
+
+function createStudent (data) {
+  return {
+    uuid: data.uuid,
+    login: data.login,
+    type: data.type,
+    schoolClass: data.schoolClass
+  }
+}
+
+function createUser (user) {
+  if (user.type === 'student') {
+    return createStudent(user)
+  } else {
+    return createTeacher(user)
   }
 }
 

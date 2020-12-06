@@ -1,4 +1,4 @@
-import getAllSchoolClasses from '../../repositories/getAllSchoolClasses'
+import getAllSchoolClasses from '../../../repositories/getAllSchoolClasses'
 
 export default function fetchKnown (req, res) {
   const schoolClasses = getAllSchoolClasses()
