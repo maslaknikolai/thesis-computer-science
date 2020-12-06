@@ -1,4 +1,4 @@
-import { SignInUser } from './AuthManager'
+import { signInUser } from '../../AuthManager'
 
 export default function login (req, res) {
   const {
@@ -16,10 +16,7 @@ export default function login (req, res) {
     })
   }
 
-  const token = SignInUser({
-    login,
-    code
-  })
+  const token = signInUser({ login, code })
 
   res.json({ token })
 }

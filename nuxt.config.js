@@ -63,6 +63,9 @@ export default {
           logout: false
         }
       }
+    },
+    redirect: {
+      logout: '/login'
     }
   },
 

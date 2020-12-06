@@ -1,15 +1,26 @@
-import db from './dbProvider'
 import jwt from './jwt'
+import { findUser } from './models/User'
 
-export function SignInUser ({
+export function signInUser ({
   login,
   code
 }) {
-  const users = db.getData('/users')
-  const user = users.find(user => user.login === login && user.code === code)
+  const user = findUser({ login, code })
 
   return jwt.sign({
-    login: user.login,
-    type: user.type
+    uuid: user.uuid
   })
+}
+
+export function getUserByToken (token) {
+  return jwt.verify(token)
+    .then(({ data }) => {
+      const { uuid } = data
+      const user = findUser({ uuid })
+
+      return user
+    })
+    .catch(() => {
+      return false
+    })
 }

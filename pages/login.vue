@@ -16,12 +16,14 @@
             v-model="formData.login"
             :error-messages="errors.login"
             label="Логин"
+            @focus="formData.login = null"
           />
 
           <v-text-field
             v-model="formData.code"
             :error-messages="errors.code"
             label="Код"
+            @focus="formData.code = null"
           />
         </v-card-text>
 
@@ -41,6 +43,7 @@
 <script>
 export default {
   layout: 'no-sidebar',
+  middleware: 'auth',
   auth: 'guest',
 
   data: () => ({
@@ -53,21 +56,18 @@ export default {
     errors: {}
   }),
   methods: {
-    async signIn () {
+    signIn () {
+      this.errors = {}
       this.loading = true
-
-      try {
-        const response = await this.$auth.loginWith('local', { data: this.formData })
-        console.log(response)
-      } catch (err) {
-        if (err.response.data.errors) {
+      this.$auth.loginWith('local', { data: this.formData })
+        .catch((error) => {
           try {
-            this.errors = err.response.data.errors
+            this.errors = error.response.data.errors
           } catch {}
-        }
-      }
-
-      this.loading = false
+        })
+        .finally(() => {
+          this.loading = false
+        })
     }
   }
 }

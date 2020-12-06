@@ -1,18 +1,21 @@
-import bodyParser from 'body-parser'
 import express from 'express'
 
-import login from './login'
-import getUser from './getUser'
+import login from './controllers/auth/login'
+import profile from './controllers/auth/profile'
+
+import storeTask from './controllers/tasks/store'
 
 const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json({ limit: '50mb' }))
 
-app.all('/getJSON', (req, res) => {
+app.all('/test', (req, res) => {
   res.json({ data: 'data' })
 })
 
 app.post('/auth/login', login)
-app.get('/auth/user', getUser)
+app.get('/auth/user', profile)
 
-module.exports = app
+app.post('/tasks', storeTask)
+
+export default app
