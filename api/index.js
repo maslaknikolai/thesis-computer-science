@@ -2,6 +2,7 @@ import express from 'express'
 
 import login from './controllers/auth/login'
 import profile from './controllers/auth/profile'
+import fetchKnownSchoolClasses from './controllers/schoolClasses/fetchKnown'
 
 import storeTask from './controllers/tasks/store'
 
@@ -17,5 +18,7 @@ app.post('/auth/login', login)
 app.get('/auth/user', profile)
 
 app.post('/tasks', storeTask)
+
+app.get('/known-school-classes', fetchKnownSchoolClasses)
 
 export default app

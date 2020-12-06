@@ -6,6 +6,22 @@
       label="Название задания"
     />
 
+    <SchoolClassesLoader
+      v-slot="{
+        schoolClasses,
+        schoolClassesLoading
+      }"
+    >
+      <v-select
+        v-model="formData.forSchoolClasses"
+        multiple
+        :items="schoolClasses"
+        :error-messages="errors ? errors.forSchoolClasses : null"
+        :loading="schoolClassesLoading"
+        label="Для каких классов"
+      />
+    </SchoolClassesLoader>
+
     <v-file-input
       v-model="formData.file"
       label="Файл"
@@ -50,6 +66,7 @@ export default {
     formData: {
       name: '',
       file: null,
+      forSchoolClasses: '',
       type: 'test', // test | text
       questions: [
         createQuestion()

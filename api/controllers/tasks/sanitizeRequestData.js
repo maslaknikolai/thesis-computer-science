@@ -3,6 +3,7 @@ export default function sanitizeRequestData (requestBody) {
     name: requestBody.name,
     file: requestBody.file,
     type: requestBody.type,
+    forSchoolClasses: requestBody.forSchoolClasses,
     questions: requestBody.questions.map(
       question => ({
         text: question.text,

@@ -3,6 +3,7 @@ export default function validateSaveRequest (requestBody) {
   const errors = {
     name: [],
     type: [],
+    forSchoolClasses: [],
     questions: {
       errors: []
     }
@@ -10,6 +11,16 @@ export default function validateSaveRequest (requestBody) {
 
   if (!requestBody.name) {
     errors.name.push('Укажите название задания')
+    result = false
+  }
+
+  if (!requestBody.forSchoolClasses || !requestBody.forSchoolClasses.length) {
+    errors.forSchoolClasses.push('Укажите для каких классов предназначено задание')
+    result = false
+  }
+
+  if (!requestBody.forSchoolClasses || !requestBody.forSchoolClasses.length) {
+    errors.forSchoolClasses.push('Укажите для каких классов предназначено задание')
     result = false
   }
 

@@ -5,122 +5,15 @@
             "type": "admin",
             "login": "test",
             "code": "123"
+        },
+        {
+            "uuid": "1",
+            "type": "student",
+            "login": "st",
+            "code": "st",
+            "schoolClass": "9г"
         }
     ],
     "tasks": [
-        {
-            "uuid": "1ba81b9b-d0de-4d72-807d-2d572220e069",
-            "name": "123",
-            "file": null,
-            "type": "test",
-            "questions": [
-                {
-                    "text": "123",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "1",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "8cef21d3-e058-4e8a-bcc2-f89980d6a75a",
-            "name": "123",
-            "file": null,
-            "type": "test",
-            "questions": [
-                {
-                    "text": "1231",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "213123",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "44e794cb-1ec7-4763-bd0e-e83b8623591b",
-            "name": "12312",
-            "file": null,
-            "type": "test",
-            "questions": [
-                {
-                    "text": "123123",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "123",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "6adf9993-186a-4409-a9d4-2e2a37110390",
-            "name": "dawd",
-            "file": null,
-            "type": "test",
-            "questions": [
-                {
-                    "text": "1231",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "123",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "ca8ca808-c0eb-42fa-8b51-94962b4a24c5",
-            "name": "12313",
-            "file": null,
-            "type": "test",
-            "questions": [
-                {
-                    "text": "123123",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "123",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "2ebaba9a-804a-4018-9ec1-3dc8e5b7d7d9",
-            "name": "qe1231",
-            "file": null,
-            "type": "test",
-            "questions": [
-                {
-                    "text": "12313",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "12313",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        }
     ]
 }
