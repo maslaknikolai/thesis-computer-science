@@ -16,31 +16,5 @@
         }
     ],
     "tasks": [
-        {
-            "uuid": "c8945646-a8e5-4168-811f-b2e7d9a02970",
-            "name": "Сосни",
-            "file": null,
-            "type": "test",
-            "forSchoolClasses": [
-                "9г"
-            ],
-            "questions": [
-                {
-                    "text": "Ты пидор",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "Да",
-                            "isCorrect": true
-                        },
-                        {
-                            "text": "Да",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        }
     ]
 }
