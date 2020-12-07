@@ -15,6 +15,11 @@ export default {
     ]
   },
 
+  server: {
+    host: '0.0.0.0',
+    post: 80
+  },
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
   ],
@@ -44,7 +49,10 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    proxy: true,
+    baseUrl: ''
+  },
 
   auth: {
     strategies: {
