@@ -19,7 +19,7 @@
         </v-card-title>
 
         <v-card-text>
-          <nuxt-link :to="`/student/tasks/${task.uuid}`">
+          <nuxt-link :to="`/student/tasks/do/${task.uuid}`">
             Перейти к выполнению
           </nuxt-link>
         </v-card-text>

@@ -20,6 +20,8 @@
           v-for="(question, questionIndex) in task.questions"
           :key="questionIndex"
         >
+          <v-divider class="my-2" />
+
           {{ question.text }}
 
           <v-radio-group
@@ -43,8 +45,6 @@
               :label="option.text"
             />
           </div>
-
-          <v-divider class="my-2" />
         </div>
       </div>
 
@@ -100,7 +100,13 @@ export default {
       this.loading = true
       TasksService.submitWork(this.$axios, this.formData, this.task.uuid)
         .then(() => {
+          this.$noty.error('Работа успешно сдана')
           this.$router.push('/')
+        })
+        .catch((error) => {
+          if (error.message) {
+            this.$noty.error(error.message)
+          }
         })
         .finally(() => {
           this.loading = false

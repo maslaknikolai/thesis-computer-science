@@ -11,10 +11,40 @@
             "type": "student",
             "login": "st",
             "code": "st",
-
-            "schoolClass": "9г"
+            "schoolClass": "9г",
+            "works": []
         }
     ],
     "tasks": [
+        {
+            "uuid": "403b9479-965c-427c-95b5-7564e012f332",
+            "name": "Тест 14.12",
+            "file": "5374ae5a7c22471bb8a91ad49710ab83.jpg",
+            "type": "test",
+            "forSchoolClasses": [
+                "9г"
+            ],
+            "questions": [
+                {
+                    "text": "Кто?",
+                    "isMultiple": false,
+                    "options": [
+                        {
+                            "text": "Эйнштейн",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "Митич матич",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "Идти",
+                            "isCorrect": true
+                        }
+                    ]
+                }
+            ],
+            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        }
     ]
 }

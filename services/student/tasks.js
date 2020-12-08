@@ -9,5 +9,14 @@ export default {
   },
   submitWork (axios, formData, taskUUID) {
     return axios.post(`/api/student/my-tasks/${taskUUID}`, formData)
+      .catch((error) => {
+        if (error.response && error.response.data && error.response.data.message) {
+          return Promise.reject(
+            new Error(error.response.data.message)
+          )
+        }
+
+        return Promise.reject(error)
+      })
   }
 }

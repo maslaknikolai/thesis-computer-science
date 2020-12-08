@@ -1,23 +1,41 @@
 import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
 
-// function createTask ({
-//   uuid,
-//   name,
-//   file,
-//   type,
-//   questions,
-//   user
-// }) {
-//   return {
-//     uuid,
-//     name,
-//     file,
-//     type,
-//     questions,
-//     user
-//   }
-// }
+export default function createTask ({
+  uuid,
+  name,
+  file,
+  type,
+  forSchoolClasses,
+  questions,
+  user
+}) {
+  return {
+    uuid,
+    name,
+    file,
+    type,
+    forSchoolClasses,
+    questions,
+    user
+  }
+}
+
+export function findTask (data) {
+  const tasks = db.getData('/tasks')
+  const task = tasks.find((taskItem) => {
+    return Object.entries(data)
+      .every(
+        ([key, value]) => taskItem[key] === value
+      )
+  })
+
+  if (!task) {
+    return false
+  }
+
+  return createTask(task)
+}
 
 export function storeTask ({
   name,
@@ -39,5 +57,5 @@ export function storeTask ({
 
   db.push('/tasks[]', task, true)
 
-  return task
+  return createTask(task)
 }
