@@ -1,10 +1,13 @@
 export default function sanitizeRequestData (requestBody) {
-  return {
+  const body = {
     name: requestBody.name,
     file: requestBody.file,
     type: requestBody.type,
-    forSchoolClasses: requestBody.forSchoolClasses,
-    questions: requestBody.questions.map(
+    forSchoolClasses: requestBody.forSchoolClasses
+  }
+
+  if (requestBody.type === 'test') {
+    body.questions = requestBody.questions.map(
       question => ({
         text: question.text,
         isMultiple: question.isMultiple,
@@ -17,4 +20,6 @@ export default function sanitizeRequestData (requestBody) {
       })
     )
   }
+
+  return body
 }

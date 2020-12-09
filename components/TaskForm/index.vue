@@ -33,7 +33,7 @@
       row
     >
       <v-radio value="test" label="Тест" />
-      <v-radio value="text" label="Творческое" />
+      <v-radio value="text" label="Развернутый ответ" />
     </v-radio-group>
 
     <TestQuestions

@@ -49,6 +49,7 @@ export default {
       this.saving = true
       TasksService.store(this.$axios, formData)
         .then(() => {
+          this.$noty.success('Задание успешно создано')
           this.$router.push('/')
         })
         .catch((error) => {

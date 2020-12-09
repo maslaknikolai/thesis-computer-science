@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
+import calculateTaskScore from './calculateTaskScore'
 
 export default function createTask ({
   uuid,
@@ -17,7 +18,11 @@ export default function createTask ({
     type,
     forSchoolClasses,
     questions,
-    user
+    user,
+
+    calculateTaskScore (answers) {
+      return calculateTaskScore(this, answers)
+    }
   }
 }
 

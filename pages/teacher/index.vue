@@ -10,6 +10,12 @@
           <nuxt-link to="/teacher/create-task">
             Создать задание
           </nuxt-link>
+
+          <br>
+
+          <nuxt-link to="/teacher/works">
+            Выполненные работы
+          </nuxt-link>
         </v-card-text>
       </v-card>
     </v-col>

@@ -1,7 +1,24 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <h1>Задания</h1>
+      <v-layout justify-space-between>
+        <v-flex>
+          <h1>Задания</h1>
+        </v-flex>
+
+        <v-flex shrink>
+          <v-btn
+            text
+            to="/student/"
+          >
+            <v-icon left>
+              mdi-chevron-left
+            </v-icon>
+
+            Назад
+          </v-btn>
+        </v-flex>
+      </v-layout>
 
       <div
         v-if="!tasks.length && !loading"
@@ -10,30 +27,27 @@
         Заданий нет
       </div>
 
-      <v-card
+      <TaskItem
         v-for="task in tasks"
         :key="task.uuid"
-      >
-        <v-card-title class="headline">
-          {{ task.name }}
-        </v-card-title>
-
-        <v-card-text>
-          <nuxt-link :to="`/student/tasks/do/${task.uuid}`">
-            Перейти к выполнению
-          </nuxt-link>
-        </v-card-text>
-      </v-card>
+        :task="task"
+        :work-of-task="getWorkOfTask(task)"
+      />
     </v-col>
   </v-row>
 </template>
 
 <script>
 import TasksService from '~/services/student/tasks'
+import TaskItem from '~/components/student/tasks/TaskItem.vue'
 export default {
   middleware: ['studentOnly'],
 
-  async asyncData ({ $axios }) {
+  components: {
+    TaskItem
+  },
+
+  async asyncData ({ $axios, store }) {
     const tasks = await TasksService.index($axios)
 
     return {
@@ -43,6 +57,14 @@ export default {
 
   data: () => ({
     tasks: []
-  })
+  }),
+
+  methods: {
+    getWorkOfTask (task) {
+      return this.$store.state.auth.user.works.find(
+        work => work.taskUUID === task.uuid
+      )
+    }
+  }
 }
 </script>

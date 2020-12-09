@@ -1,7 +1,9 @@
 import db from '../dbProvider'
 
-function createWork (data) {
-  return { ...data }
+export function createWork (data) {
+  return {
+    ...data
+  }
 }
 
 export function storeWork ({
@@ -13,7 +15,8 @@ export function storeWork ({
   const work = task.type === 'test'
     ? {
       taskUUID: task.uuid,
-      answers
+      answers,
+      score: task.calculateTaskScore(answers)
     }
     : {
       taskUUID: task.uuid,

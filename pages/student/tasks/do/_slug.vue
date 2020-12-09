@@ -2,7 +2,22 @@
   <div>
     <v-card>
       <v-card-title>
-        {{ task.name }}
+        <v-flex>
+          {{ task.name }}
+        </v-flex>
+
+        <v-flex shrink>
+          <v-btn
+            text
+            to="/student/tasks"
+          >
+            <v-icon left>
+              mdi-chevron-left
+            </v-icon>
+
+            Назад
+          </v-btn>
+        </v-flex>
       </v-card-title>
     </v-card>
 
@@ -43,6 +58,7 @@
               :key="optionIndex"
               v-model="formData.answers[questionIndex][optionIndex]"
               :label="option.text"
+              hide-details
             />
           </div>
         </div>
@@ -88,11 +104,13 @@ export default {
   }),
 
   created () {
-    this.formData.answers = this.task.questions.map(
-      question => !question.isMultiple
-        ? ''
-        : question.options.map(option => false)
-    )
+    if (this.task.questions) {
+      this.formData.answers = this.task.questions.map(
+        question => !question.isMultiple
+          ? ''
+          : question.options.map(option => false)
+      )
+    }
   },
 
   methods: {
@@ -100,7 +118,7 @@ export default {
       this.loading = true
       TasksService.submitWork(this.$axios, this.formData, this.task.uuid)
         .then(() => {
-          this.$noty.error('Работа успешно сдана')
+          this.$noty.success('Работа успешно сдана')
           this.$router.push('/')
         })
         .catch((error) => {

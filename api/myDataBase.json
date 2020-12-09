@@ -12,7 +12,31 @@
             "login": "st",
             "code": "st",
             "schoolClass": "9г",
-            "works": []
+            "works": [
+                {
+                    "taskUUID": "403b9479-965c-427c-95b5-7564e012f332",
+                    "answers": [
+                        2
+                    ],
+                    "score": 1
+                },
+                {
+                    "taskUUID": "0522f0e7-8860-4393-b110-0dbb57819600",
+                    "answers": [
+                        "",
+                        [
+                            true,
+                            true,
+                            false
+                        ]
+                    ],
+                    "score": 0
+                },
+                {
+                    "taskUUID": "0c9f1c3c-28be-480d-a9f0-e3fcfd26062f",
+                    "text": "Я не буду писать это говно."
+                }
+            ]
         }
     ],
     "tasks": [
@@ -43,6 +67,60 @@
                         }
                     ]
                 }
+            ],
+            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        },
+        {
+            "uuid": "0522f0e7-8860-4393-b110-0dbb57819600",
+            "name": "awd",
+            "file": null,
+            "type": "test",
+            "forSchoolClasses": [
+                "9г"
+            ],
+            "questions": [
+                {
+                    "text": "Какий",
+                    "isMultiple": false,
+                    "options": [
+                        {
+                            "text": "Да",
+                            "isCorrect": true
+                        },
+                        {
+                            "text": "Не ",
+                            "isCorrect": false
+                        }
+                    ]
+                },
+                {
+                    "text": "Даты когда в мире не было войн",
+                    "isMultiple": true,
+                    "options": [
+                        {
+                            "text": "20 000 лет до н.э",
+                            "isCorrect": true
+                        },
+                        {
+                            "text": "1234",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "2009",
+                            "isCorrect": true
+                        }
+                    ]
+                }
+            ],
+            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        },
+        {
+            "uuid": "0c9f1c3c-28be-480d-a9f0-e3fcfd26062f",
+            "name": "Творческое",
+            "file": null,
+            "type": "text",
+            "forSchoolClasses": [
+                "9г"
             ],
             "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
         }
