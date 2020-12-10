@@ -11,6 +11,7 @@
             "type": "student",
             "login": "st",
             "code": "st",
+            "name": "Иванов Ваня",
             "schoolClass": "9г",
             "works": [
                 {

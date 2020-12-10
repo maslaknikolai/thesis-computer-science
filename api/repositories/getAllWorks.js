@@ -1,4 +1,3 @@
-import works from '../../services/teacher/works'
 import db from '../dbProvider'
 import { createWork } from '../models/Work'
 

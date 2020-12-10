@@ -9,6 +9,7 @@ import getAllMyTasks from './controllers/student/tasks/getAllMyTasks'
 import showStudentTask from './controllers/student/tasks/show'
 import submitStudentTaskWork from './controllers/student/tasks/submitWork'
 import allWorks from './controllers/teacher/works/allWorks'
+import getWork from './controllers/teacher/works/getWork'
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.get('/auth/user', profile)
 app.post('/teacher/tasks', storeTask)
 app.get('/teacher/known-school-classes', fetchKnownSchoolClasses)
 app.get('/teacher/works', allWorks)
+app.get('/teacher/works/:studentuuid/:taskuuid', getWork)
 
 app.get('/student/my-tasks', getAllMyTasks)
 app.get('/student/my-tasks/:uuid', showStudentTask)

@@ -12,6 +12,7 @@ function createStudent (data) {
   return {
     uuid: data.uuid,
     login: data.login,
+    name: data.name,
     type: data.type,
     schoolClass: data.schoolClass,
     works: data.works

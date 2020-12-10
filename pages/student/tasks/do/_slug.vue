@@ -63,7 +63,6 @@
           </div>
         </div>
       </div>
-
       <div v-if="task.type === 'text'">
         <v-textarea
           v-model="formData.text"

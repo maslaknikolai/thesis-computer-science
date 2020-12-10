@@ -2,8 +2,23 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-card>
-        <v-card-title class="headline">
-          Создать задание
+        <v-card-title class="headline justify-space-between">
+          <v-flex>
+            Создать задание
+          </v-flex>
+
+          <v-flex shrink>
+            <v-btn
+              text
+              to="/teacher/"
+            >
+              <v-icon left>
+                mdi-chevron-left
+              </v-icon>
+
+              Назад
+            </v-btn>
+          </v-flex>
         </v-card-title>
 
         <v-card-text>
