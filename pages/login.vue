@@ -22,7 +22,8 @@
           <v-text-field
             v-model="formData.code"
             :error-messages="errors.code"
-            label="Код"
+            label="Пароль"
+            type="password"
             @focus="formData.code = null"
           />
         </v-card-text>
