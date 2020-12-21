@@ -6,6 +6,11 @@
           Кабинет студента
         </v-card-title>
 
+        <v-card-subtitle>
+          {{ $store.state.auth.user.name }}. Класс:
+          {{ $store.state.auth.user.schoolClass }}
+        </v-card-subtitle>
+
         <v-card-text>
           <nuxt-link to="/student/tasks">
             Задания
