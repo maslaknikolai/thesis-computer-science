@@ -22,7 +22,6 @@
           <div
             :class="[
               'display-2',
-              colorClassName
             ]"
           >
             {{ score }}

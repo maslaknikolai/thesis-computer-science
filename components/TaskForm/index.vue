@@ -16,6 +16,8 @@
         v-model="formData.forSchoolClasses"
         multiple
         :items="schoolClasses"
+        item-value="uuid"
+        item-text="name"
         :error-messages="errors ? errors.forSchoolClasses : null"
         :loading="schoolClassesLoading"
         label="Для каких классов"

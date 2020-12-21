@@ -8,7 +8,7 @@
 
         <v-card-subtitle>
           {{ $store.state.auth.user.name }}. Класс:
-          {{ $store.state.auth.user.schoolClass }}
+          {{ $store.state.auth.user.schoolClass.name }}
         </v-card-subtitle>
 
         <v-card-text>

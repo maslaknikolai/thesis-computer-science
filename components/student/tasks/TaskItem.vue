@@ -1,5 +1,6 @@
 <template>
   <div class="mb-2">
+    {{ workOfTask }}
     <v-card>
       <v-card-title class="headline">
         {{ task.name }}
@@ -27,7 +28,7 @@
           <div
             :class="[
               'display-2',
-              colorClassName
+              scorecolorClassName
             ]"
           >
             {{ score }}
@@ -67,7 +68,7 @@ export default {
         Math.round(this.workOfTask.score * 5)
       )
     },
-    colorClassName () {
+    scorecolorClassName () {
       const scoreColors = {
         2: 'red--text',
         3: 'yellow--text',
@@ -75,10 +76,10 @@ export default {
         5: 'green--text'
       }
 
-      const colorClassName = Object.entries(scoreColors)
+      const scorecolorClassName = Object.entries(scoreColors)
         .find(([scoreItem, color]) => +scoreItem === this.score)
 
-      return colorClassName ? colorClassName[1] : ''
+      return scorecolorClassName ? scorecolorClassName[1] : ''
     }
   }
 }

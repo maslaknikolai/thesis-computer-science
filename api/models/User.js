@@ -1,4 +1,5 @@
 import db from '../dbProvider'
+import { findSchoolClass } from './SchoolClass'
 
 function createTeacher (data) {
   return {
@@ -14,7 +15,7 @@ function createStudent (data) {
     login: data.login,
     name: data.name,
     type: data.type,
-    schoolClass: data.schoolClass,
+    schoolClass: findSchoolClass({ uuid: data.schoolClass }),
     works: data.works
   }
 }

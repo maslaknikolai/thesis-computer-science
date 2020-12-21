@@ -12,7 +12,7 @@
             "login": "st",
             "code": "st",
             "name": "Иванов Ваня",
-            "schoolClass": "9г",
+            "schoolClass": "1",
             "works": [
                 {
                     "taskUUID": "403b9479-965c-427c-95b5-7564e012f332",
@@ -36,6 +36,13 @@
                 {
                     "taskUUID": "0c9f1c3c-28be-480d-a9f0-e3fcfd26062f",
                     "text": "Я не буду писать это говно."
+                },
+                {
+                    "taskUUID": "8fab629a-cec7-45d0-9052-9e6e987b872b",
+                    "answers": [
+                        ""
+                    ],
+                    "score": 0
                 }
             ]
         }
@@ -47,7 +54,7 @@
             "file": "5374ae5a7c22471bb8a91ad49710ab83.jpg",
             "type": "test",
             "forSchoolClasses": [
-                "9г"
+                "1"
             ],
             "questions": [
                 {
@@ -77,7 +84,7 @@
             "file": null,
             "type": "test",
             "forSchoolClasses": [
-                "9г"
+                "1"
             ],
             "questions": [
                 {
@@ -121,9 +128,41 @@
             "file": null,
             "type": "text",
             "forSchoolClasses": [
-                "9г"
+                "1"
             ],
             "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        },
+        {
+            "uuid": "8fab629a-cec7-45d0-9052-9e6e987b872b",
+            "name": "awdawd",
+            "file": null,
+            "type": "test",
+            "forSchoolClasses": [
+                "1"
+            ],
+            "questions": [
+                {
+                    "text": "awdawda",
+                    "isMultiple": false,
+                    "options": [
+                        {
+                            "text": "awdawdawd",
+                            "isCorrect": true
+                        },
+                        {
+                            "text": "awd",
+                            "isCorrect": false
+                        }
+                    ]
+                }
+            ],
+            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        }
+    ],
+    "schoolClasses": [
+        {
+            "uuid": "1",
+            "name": "9г"
         }
     ]
 }
