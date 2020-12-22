@@ -1,5 +1,4 @@
-import { findTask } from '../../../models/Task'
-import getAllWorks from '../../../repositories/getAllWorks'
+import { getAllWorks } from '../../../models/Work'
 
 export default function allWorks (req, res) {
   const works = getAllWorks()
@@ -7,13 +6,13 @@ export default function allWorks (req, res) {
   res.json({
     data: works.map((work) => {
       return {
+        uuid: work.uuid,
         taskUUID: work.taskUUID,
         text: work.text,
         answers: work.answers,
         score: work.score,
-
         student: work.student,
-        task: findTask({ uuid: work.taskUUID })
+        task: work.task
       }
     })
   })

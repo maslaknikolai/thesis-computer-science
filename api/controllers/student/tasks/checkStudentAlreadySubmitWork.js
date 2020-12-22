@@ -1,3 +1,10 @@
+import { findWork } from '../../../models/Work'
+
 export default function checkStudentAlreadySubmitWork (student, task) {
-  return student.works.some(work => work.taskUUID === task.uuid)
+  const work = findWork({
+    studentUUID: student.uuid,
+    taskUUID: task.uuid
+  })
+
+  return !!work
 }

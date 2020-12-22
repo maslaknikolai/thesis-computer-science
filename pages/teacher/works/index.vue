@@ -21,7 +21,7 @@
       </v-layout>
 
       <div
-        v-if="!works.length && !loading"
+        v-if="!works.length"
         class="pa-4"
       >
         Нет выполненных работ

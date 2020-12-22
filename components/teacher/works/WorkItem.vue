@@ -7,7 +7,7 @@
 
       <v-card-text>
         <v-btn
-          :to="`/teacher/works/${work.student.uuid}/${work.task.uuid}`"
+          :to="`/teacher/works/${work.uuid}`"
         >
           Смотреть
 
@@ -47,7 +47,7 @@ export default {
     score () {
       return Math.max(
         2,
-        this.work.score * 5
+        this.work.score
       )
     }
   }

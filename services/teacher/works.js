@@ -3,8 +3,12 @@ export default {
     return axios.get('/api/teacher/works')
       .then(response => response.data.data)
   },
-  show (axios, studentUUID, taskUUID) {
-    return axios.get(`api/teacher/works/${studentUUID}/${taskUUID}`)
+  show (axios, workUUID) {
+    return axios.get(`api/teacher/works/${workUUID}`)
+      .then(response => response.data.data)
+  },
+  setScore (axios, workUUID, score) {
+    return axios.post(`api/teacher/works/${workUUID}/set-score`, { score })
       .then(response => response.data.data)
   }
 }

@@ -12,75 +12,13 @@
             "login": "st",
             "code": "st",
             "name": "Иванов Ваня",
-            "schoolClass": "1",
-            "works": [
-                {
-                    "taskUUID": "403b9479-965c-427c-95b5-7564e012f332",
-                    "answers": [
-                        2
-                    ],
-                    "score": 1
-                },
-                {
-                    "taskUUID": "0522f0e7-8860-4393-b110-0dbb57819600",
-                    "answers": [
-                        "",
-                        [
-                            true,
-                            true,
-                            false
-                        ]
-                    ],
-                    "score": 0
-                },
-                {
-                    "taskUUID": "0c9f1c3c-28be-480d-a9f0-e3fcfd26062f",
-                    "text": "Я не буду писать это говно."
-                },
-                {
-                    "taskUUID": "8fab629a-cec7-45d0-9052-9e6e987b872b",
-                    "answers": [
-                        ""
-                    ],
-                    "score": 0
-                }
-            ]
+            "schoolClass": "1"
         }
     ],
     "tasks": [
         {
-            "uuid": "403b9479-965c-427c-95b5-7564e012f332",
-            "name": "Тест 14.12",
-            "file": "5374ae5a7c22471bb8a91ad49710ab83.jpg",
-            "type": "test",
-            "forSchoolClasses": [
-                "1"
-            ],
-            "questions": [
-                {
-                    "text": "Кто?",
-                    "isMultiple": false,
-                    "options": [
-                        {
-                            "text": "Эйнштейн",
-                            "isCorrect": false
-                        },
-                        {
-                            "text": "Митич матич",
-                            "isCorrect": false
-                        },
-                        {
-                            "text": "Идти",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "0522f0e7-8860-4393-b110-0dbb57819600",
-            "name": "awd",
+            "uuid": "504740d4-4055-4553-8b2f-8fc16a1a5f53",
+            "name": "История руси",
             "file": null,
             "type": "test",
             "forSchoolClasses": [
@@ -88,75 +26,74 @@
             ],
             "questions": [
                 {
-                    "text": "Какий",
+                    "text": "Кто крестил Русь",
                     "isMultiple": false,
                     "options": [
                         {
-                            "text": "Да",
-                            "isCorrect": true
+                            "text": "Петр",
+                            "isCorrect": false
                         },
                         {
-                            "text": "Не ",
+                            "text": "Олег",
                             "isCorrect": false
+                        },
+                        {
+                            "text": "Владимир",
+                            "isCorrect": true
                         }
                     ]
                 },
                 {
-                    "text": "Даты когда в мире не было войн",
-                    "isMultiple": true,
-                    "options": [
-                        {
-                            "text": "20 000 лет до н.э",
-                            "isCorrect": true
-                        },
-                        {
-                            "text": "1234",
-                            "isCorrect": false
-                        },
-                        {
-                            "text": "2009",
-                            "isCorrect": true
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "0c9f1c3c-28be-480d-a9f0-e3fcfd26062f",
-            "name": "Творческое",
-            "file": null,
-            "type": "text",
-            "forSchoolClasses": [
-                "1"
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "8fab629a-cec7-45d0-9052-9e6e987b872b",
-            "name": "awdawd",
-            "file": null,
-            "type": "test",
-            "forSchoolClasses": [
-                "1"
-            ],
-            "questions": [
-                {
-                    "text": "awdawda",
+                    "text": "Когда крестили Русь",
                     "isMultiple": false,
                     "options": [
                         {
-                            "text": "awdawdawd",
+                            "text": "1488",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "228",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "69",
+                            "isCorrect": true
+                        }
+                    ]
+                },
+                {
+                    "text": "Кто такие печенеги",
+                    "isMultiple": false,
+                    "options": [
+                        {
+                            "text": "Еда",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "Люди",
                             "isCorrect": true
                         },
                         {
-                            "text": "awd",
+                            "text": "Бактерии",
                             "isCorrect": false
                         }
                     ]
                 }
             ],
             "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        }
+    ],
+    "works": [
+        {
+            "uuid": "082adf47-17ba-4bf1-b7ba-d0c1e0190d5a",
+            "studentUUID": "1",
+            "taskUUID": "504740d4-4055-4553-8b2f-8fc16a1a5f53",
+            "answers": [
+                0,
+                0,
+                1
+            ],
+            "score": 2
         }
     ],
     "schoolClasses": [

@@ -1,9 +1,44 @@
+import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
+import calculateTaskScore from '../utils/calculateTaskScore'
+import { findTask } from './Task'
+import { findUser } from './User'
 
-export function createWork (data) {
+function updateWorkData (workUUID, data) {
+  const index = db.getIndex('/works', workUUID, 'uuid')
+  let workRaw = db.getData(`/works[${index}]`)
+
+  workRaw = { ...workRaw, ...data }
+
+  db.push(`/works[${index}]`, workRaw, true)
+}
+
+export function createWork ({
+  uuid,
+  studentUUID,
+  taskUUID,
+  answers,
+  text,
+  score
+}) {
   return {
-    ...data
+    uuid,
+    student: findUser({ uuid: studentUUID }),
+    task: findTask({ uuid: taskUUID }),
+    answers,
+    text,
+    score,
+
+    setScore (score) {
+      updateWorkData(uuid, { score })
+      this.score = score
+    }
   }
+}
+
+export function getAllWorks () {
+  const works = db.getData('/works')
+  return works.map(createWork)
 }
 
 export function storeWork ({
@@ -14,18 +49,37 @@ export function storeWork ({
 }) {
   const work = task.type === 'test'
     ? {
+      uuid: uuidv4(),
+      studentUUID: student.uuid,
       taskUUID: task.uuid,
       answers,
-      score: task.calculateTaskScore(answers)
+      score: calculateTaskScore(task, answers)
     }
     : {
+      uuid: uuidv4(),
+      studentUUID: student.uuid,
       taskUUID: task.uuid,
-      text
+      text,
+      score: null
     }
 
-  const studentIndex = db.getIndex('/users', student.uuid, 'uuid')
+  db.push('/works[]', work, true)
 
-  db.push(`/users[${studentIndex}]/works[]`, work, true)
+  return createWork(work)
+}
+
+export function findWork (data) {
+  const works = db.getData('/works')
+  const work = works.find((workItem) => {
+    return Object.entries(data)
+      .every(
+        ([key, value]) => workItem[key] === value
+      )
+  })
+
+  if (!work) {
+    return false
+  }
 
   return createWork(work)
 }

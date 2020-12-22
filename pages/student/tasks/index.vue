@@ -31,7 +31,6 @@
         v-for="task in tasks"
         :key="task.uuid"
         :task="task"
-        :work-of-task="getWorkOfTask(task)"
       />
     </v-col>
   </v-row>
@@ -57,14 +56,6 @@ export default {
 
   data: () => ({
     tasks: []
-  }),
-
-  methods: {
-    getWorkOfTask (task) {
-      return this.$store.state.auth.user.works.find(
-        work => work.taskUUID === task.uuid
-      )
-    }
-  }
+  })
 }
 </script>

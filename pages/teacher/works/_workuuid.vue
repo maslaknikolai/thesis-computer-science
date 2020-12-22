@@ -3,7 +3,10 @@
     <v-layout justify-space-between>
       <v-flex>
         <h1>{{ work.task.name }}</h1>
-        <h2>{{ work.student.name }}</h2>
+        <h2>
+          {{ work.student.name }},
+          {{ work.student.schoolClass.name }}
+        </h2>
       </v-flex>
 
       <v-flex shrink>
@@ -22,7 +25,7 @@
 
     <v-card v-if="work.task.type === 'text'">
       <v-card-text>
-        {{ work.text }}
+        &#34;{{ work.text }}&#34;
       </v-card-text>
     </v-card>
 
@@ -39,6 +42,7 @@
         <v-card-text>
           <v-radio-group
             v-if="!question.isMultiple"
+            readonly
             :value="work.answers[questionIndex]"
           >
             <v-layout
@@ -85,6 +89,26 @@
         </v-card-text>
       </v-card>
     </div>
+
+    <div>
+      <v-chip-group
+        v-model="work.score"
+        active-class="primary--text"
+        column
+      >
+        <v-chip
+          v-for="scoreItem in 5"
+          :key="scoreItem"
+          :value="scoreItem"
+        >
+          {{ scoreItem }}
+        </v-chip>
+      </v-chip-group>
+
+      <v-btn @click="setScore()">
+        Поставить оценку
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -93,10 +117,19 @@ import WorksService from '~/services/teacher/works'
 
 export default {
   async asyncData ({ $axios, params }) {
-    const work = await WorksService.show($axios, params.studentuuid, params.taskuuid)
+    const work = await WorksService.show($axios, params.workuuid)
 
     return {
       work
+    }
+  },
+  data: () => ({
+    work: null
+  }),
+  methods: {
+    async setScore () {
+      this.work = await WorksService.setScore(this.$axios, this.$route.params.workuuid, this.work.score)
+      this.$noty.success('Оценка поставлена')
     }
   }
 }

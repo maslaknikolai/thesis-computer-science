@@ -1,22 +1,31 @@
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 
-function createTeacher (data) {
+function createTeacher ({
+  uuid,
+  login,
+  type
+}) {
   return {
-    uuid: data.uuid,
-    login: data.login,
-    type: data.type
+    uuid,
+    login,
+    type
   }
 }
 
-function createStudent (data) {
+function createStudent ({
+  uuid,
+  login,
+  name,
+  type,
+  schoolClass
+}) {
   return {
-    uuid: data.uuid,
-    login: data.login,
-    name: data.name,
-    type: data.type,
-    schoolClass: findSchoolClass({ uuid: data.schoolClass }),
-    works: data.works
+    uuid,
+    login,
+    name,
+    type,
+    schoolClass: findSchoolClass({ uuid: schoolClass })
   }
 }
 

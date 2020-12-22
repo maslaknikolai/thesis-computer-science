@@ -1,6 +1,5 @@
 <template>
   <div class="mb-2">
-    {{ workOfTask }}
     <v-card>
       <v-card-title class="headline">
         {{ task.name }}
@@ -45,28 +44,21 @@ export default {
     task: {
       type: Object,
       required: true
-    },
-    workOfTask: {
-      validator: prop => prop === null || typeof prop === 'object',
-      required: true
     }
   },
   computed: {
     hasWork () {
-      return !!this.workOfTask
+      return !!this.task.work
     },
     hasScore () {
-      return this.hasWork && typeof this.workOfTask.score === 'number'
+      return this.hasWork && typeof this.task.work.score === 'number'
     },
     score () {
       if (!this.hasScore) {
         return null
       }
 
-      return Math.max(
-        2,
-        Math.round(this.workOfTask.score * 5)
-      )
+      return this.task.work.score
     },
     scorecolorClassName () {
       const scoreColors = {

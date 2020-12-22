@@ -1,7 +1,9 @@
 import { findWork } from '../../../models/Work'
 
-export default function getWork (req, res) {
+export default function setWorkScore (req, res) {
   const work = findWork({ uuid: req.params.workuuid })
+
+  work.setScore(req.body.score)
 
   res.json({
     data: {
