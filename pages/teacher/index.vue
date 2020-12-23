@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  middleware: ['teacherOnly'],
+  layout: 'teacher',
 
   components: {
   }

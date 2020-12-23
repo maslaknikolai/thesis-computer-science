@@ -4,6 +4,8 @@ import login from './controllers/auth/login'
 import profile from './controllers/auth/profile'
 import fetchKnownSchoolClasses from './controllers/teacher/schoolClasses/fetchKnown'
 
+import teacherTasks from './controllers/teacher/tasks/table'
+import teacherTaskShow from './controllers/teacher/tasks/show'
 import storeTask from './controllers/teacher/tasks/store'
 import getAllMyTasks from './controllers/student/tasks/getAllMyTasks'
 import showStudentTask from './controllers/student/tasks/show'
@@ -23,6 +25,8 @@ app.all('/test', (req, res) => {
 app.post('/auth/login', login)
 app.get('/auth/user', profile)
 
+app.get('/teacher/tasks', teacherTasks)
+app.get('/teacher/tasks/:uuid', teacherTaskShow)
 app.post('/teacher/tasks', storeTask)
 app.get('/teacher/known-school-classes', fetchKnownSchoolClasses)
 app.get('/teacher/works', allWorks)

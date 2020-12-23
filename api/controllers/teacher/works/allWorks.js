@@ -11,8 +11,8 @@ export default function allWorks (req, res) {
         text: work.text,
         answers: work.answers,
         score: work.score,
-        student: work.student,
-        task: work.task
+        student: work.getStudent(),
+        task: work.getTask()
       }
     })
   })

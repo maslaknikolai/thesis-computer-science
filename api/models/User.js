@@ -25,7 +25,11 @@ function createStudent ({
     login,
     name,
     type,
-    schoolClass: findSchoolClass({ uuid: schoolClass })
+    schoolClass,
+
+    getSchoolClass () {
+      return findSchoolClass({ uuid: schoolClass })
+    }
   }
 }
 

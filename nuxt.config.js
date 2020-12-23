@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import ru from 'vuetify/es5/locale/ru'
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -85,6 +86,10 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    lang: {
+      locales: { ru },
+      current: 'ru'
+    },
     theme: {
       dark: true,
       themes: {

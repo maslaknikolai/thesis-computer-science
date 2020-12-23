@@ -1,5 +1,5 @@
 export default function (context) {
-  if (!['admin', 'teacher'].includes(context.store.state.auth.user.type)) {
+  if (context.store.state.auth.user.type !== 'teacher') {
     return context.redirect('/')
   }
 }

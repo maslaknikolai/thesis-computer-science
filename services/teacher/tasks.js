@@ -13,6 +13,16 @@ async function createRequestBody (formData) {
 }
 
 export default {
+  table (axios) {
+    return axios.get('/api/teacher/tasks')
+      .then(response => response.data.data)
+  },
+
+  show (axios, uuid) {
+    return axios.get(`/api/teacher/tasks/${uuid}`)
+      .then(response => response.data.data)
+  },
+
   async store (axios, formData) {
     const requestBody = await createRequestBody(formData)
 

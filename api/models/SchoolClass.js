@@ -1,3 +1,4 @@
+import { allTasks } from '@/models/Task'
 import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
 
@@ -7,7 +8,14 @@ export default function createSchoolClass ({
 }) {
   return {
     uuid,
-    name
+    name,
+
+    getTasks () {
+      return allTasks()
+        .filter(task => task.forSchoolClasses.includes(
+          uuid
+        ))
+    }
   }
 }
 

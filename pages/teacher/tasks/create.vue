@@ -10,7 +10,7 @@
           <v-flex shrink>
             <v-btn
               text
-              to="/teacher/"
+              to="/teacher/tasks"
             >
               <v-icon left>
                 mdi-chevron-left
@@ -47,7 +47,7 @@ import TasksService from '~/services/teacher/tasks'
 import TaskForm from '~/components/TaskForm/index.vue'
 
 export default {
-  middleware: ['teacherOnly'],
+  layout: 'teacher',
 
   components: {
     TaskForm

@@ -1,0 +1,66 @@
+<template>
+  <v-row justify="center" align="center">
+    <v-col cols="12">
+      <v-layout justify-end>
+        <v-flex shrink>
+          <v-btn
+            text
+            to="/teacher/tasks"
+          >
+            <v-icon left>
+              mdi-chevron-left
+            </v-icon>
+
+            Назад
+          </v-btn>
+        </v-flex>
+      </v-layout>
+
+      <v-card>
+        <v-card-title class="justify-space-between">
+          Задание "{{ task.name }}"
+        </v-card-title>
+
+        <v-data-table
+          :headers="[
+            { text: 'Ученик', 'value': 'student' },
+            { text: 'Оценка', 'value': 'score' },
+            { text: 'Работа', value: 'uuid' }
+          ]"
+          :items="task.works"
+        >
+          <template #item.uuid="{ item }">
+            <router-link :to="`/teacher/works/${item.uuid}`">
+              Посмотреть
+            </router-link>
+          </template>
+
+          <template #item.student="{ item }">
+            <router-link :to="`/teacher/students/${item.student.uuid}`">
+              {{ item.student.name }}
+            </router-link>
+
+            <router-link :to="`/teacher/classes/${item.student.schoolClass.uuid}`">
+              {{ item.student.schoolClass.name }}
+            </router-link>
+          </template>
+        </v-data-table>
+      </v-card>
+    </v-col>
+  </v-row>
+</template>
+
+<script>
+import TasksService from '~/services/teacher/tasks'
+export default {
+  layout: 'teacher',
+
+  async asyncData ({ $axios, params }) {
+    const task = await TasksService.show($axios, params.uuid)
+
+    return {
+      task
+    }
+  }
+}
+</script>

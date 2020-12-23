@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
+import { findSchoolClass } from './SchoolClass'
+import { getAllWorks } from './Work'
 
 export default function createTask ({
   uuid,
@@ -17,7 +19,18 @@ export default function createTask ({
     type,
     forSchoolClasses,
     questions,
-    user
+    user,
+
+    getWorks () {
+      return getAllWorks()
+        .filter(work => work.taskUUID === uuid)
+    },
+
+    getSchoolClasses () {
+      return forSchoolClasses.map(
+        schoolClassUUID => findSchoolClass({ uuid: schoolClassUUID })
+      )
+    }
   }
 }
 
@@ -35,6 +48,12 @@ export function findTask (data) {
   }
 
   return createTask(task)
+}
+
+export function allTasks () {
+  const tasks = db.getData('/tasks')
+
+  return tasks.map(createTask)
 }
 
 export function storeTask ({

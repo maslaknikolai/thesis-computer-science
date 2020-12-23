@@ -23,11 +23,18 @@ export function createWork ({
 }) {
   return {
     uuid,
-    student: findUser({ uuid: studentUUID }),
-    task: findTask({ uuid: taskUUID }),
+    studentUUID,
+    taskUUID,
     answers,
     text,
     score,
+
+    getStudent () {
+      return findUser({ uuid: studentUUID })
+    },
+    getTask () {
+      return findTask({ uuid: taskUUID })
+    },
 
     setScore (score) {
       updateWorkData(uuid, { score })
