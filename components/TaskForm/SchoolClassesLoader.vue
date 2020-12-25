@@ -16,7 +16,7 @@ export default {
   }),
   created () {
     this.loading = true
-    schoolClassesService.fetchKnown(this.$axios)
+    schoolClassesService.list(this.$axios)
       .then((schoolClasses) => {
         this.schoolClasses = schoolClasses
       })

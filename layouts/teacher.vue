@@ -63,6 +63,21 @@ export default {
           icon: 'mdi-apps',
           title: 'Задания',
           to: '/teacher/tasks'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Работы',
+          to: '/teacher/works'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Классы',
+          to: '/teacher/classes'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Ученики',
+          to: '/teacher/students'
         }
       ]
     }

@@ -1,4 +1,4 @@
-import { getAllWorks } from '../../../models/Work'
+import { getAllWorks } from '@/models/Work'
 
 export default function allWorks (req, res) {
   const works = getAllWorks()
@@ -7,12 +7,21 @@ export default function allWorks (req, res) {
     data: works.map((work) => {
       return {
         uuid: work.uuid,
-        taskUUID: work.taskUUID,
-        text: work.text,
-        answers: work.answers,
         score: work.score,
-        student: work.getStudent(),
-        task: work.getTask()
+        student: (() => {
+          const student = work.getStudent()
+          return {
+            uuid: student.uuid,
+            name: student.name
+          }
+        })(),
+        task: (() => {
+          const task = work.getTask()
+          return {
+            uuid: task.uuid,
+            name: task.name
+          }
+        })()
       }
     })
   })

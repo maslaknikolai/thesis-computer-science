@@ -21,30 +21,53 @@
           Задание "{{ task.name }}"
         </v-card-title>
 
-        <v-data-table
-          :headers="[
-            { text: 'Ученик', 'value': 'student' },
-            { text: 'Оценка', 'value': 'score' },
-            { text: 'Работа', value: 'uuid' }
-          ]"
-          :items="task.works"
-        >
-          <template #item.uuid="{ item }">
-            <router-link :to="`/teacher/works/${item.uuid}`">
-              Посмотреть
+        <v-card-text>
+          Для классов:
+          <div
+            v-for="(schoolClass, i) in task.forSchoolClasses"
+            :key="schoolClass.uuid"
+          >
+            <router-link
+              :to="`/teacher/classes/${schoolClass.uuid}`"
+            >
+              {{ schoolClass.name }}
             </router-link>
-          </template>
+            <div v-if="i !== task.forSchoolClasses.length - 1">
+              |
+            </div>
+          </div>
 
-          <template #item.student="{ item }">
-            <router-link :to="`/teacher/students/${item.student.uuid}`">
-              {{ item.student.name }}
-            </router-link>
+          <br>
 
-            <router-link :to="`/teacher/classes/${item.student.schoolClass.uuid}`">
-              {{ item.student.schoolClass.name }}
-            </router-link>
-          </template>
-        </v-data-table>
+          Работы:
+          <v-data-table
+            :headers="[
+              { text: 'Ученик', 'value': 'student' },
+              { text: 'Класс', 'value': 'schoolClass' },
+              { text: 'Оценка', 'value': 'score' },
+              { text: 'Работа', value: 'uuid' }
+            ]"
+            :items="task.works"
+          >
+            <template #item.uuid="{ item }">
+              <router-link :to="`/teacher/works/${item.uuid}`">
+                Посмотреть
+              </router-link>
+            </template>
+
+            <template #item.student="{ item }">
+              <router-link :to="`/teacher/students/${item.student.uuid}`">
+                {{ item.student.name }}
+              </router-link>
+            </template>
+
+            <template #item.schoolClass="{ item }">
+              <router-link :to="`/teacher/classes/${item.student.schoolClass.uuid}`">
+                {{ item.student.schoolClass.name }}
+              </router-link>
+            </template>
+          </v-data-table>
+        </v-card-text>
       </v-card>
     </v-col>
   </v-row>

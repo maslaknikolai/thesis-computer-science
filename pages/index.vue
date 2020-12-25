@@ -1,5 +1,5 @@
 <script>
 export default {
-  middleware: ['redirectByUserRole']
+  middleware: ['auth', 'redirectByUserRole']
 }
 </script>

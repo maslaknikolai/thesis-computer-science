@@ -1,6 +1,7 @@
 import { allTasks } from '@/models/Task'
 import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
+import { allStudents } from './User'
 
 export default function createSchoolClass ({
   uuid,
@@ -15,6 +16,11 @@ export default function createSchoolClass ({
         .filter(task => task.forSchoolClasses.includes(
           uuid
         ))
+    },
+
+    getStudents () {
+      return allStudents()
+        .filter(student => student.schoolClassUUID === uuid)
     }
   }
 }

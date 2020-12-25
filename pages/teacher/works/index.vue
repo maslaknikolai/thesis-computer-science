@@ -1,50 +1,42 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <v-layout justify-space-between>
-        <v-flex>
-          <h1>Выполненные работы</h1>
-        </v-flex>
+      <v-card>
+        <v-card-title class="justify-space-between">
+          Выполненные работы
+        </v-card-title>
 
-        <v-flex shrink>
-          <v-btn
-            text
-            to="/teacher/"
-          >
-            <v-icon left>
-              mdi-chevron-left
-            </v-icon>
+        <v-data-table
+          :headers="headers"
+          :items="works"
+        >
+          <template #item.task="{ item }">
+            <router-link :to="`/teacher/tasks/${item.task.uuid}`">
+              {{ item.task.name }}
+            </router-link>
+          </template>
 
-            Назад
-          </v-btn>
-        </v-flex>
-      </v-layout>
+          <template #item.student="{ item }">
+            <router-link :to="`/teacher/students/${item.student.uuid}`">
+              {{ item.student.name }}
+            </router-link>
+          </template>
 
-      <div
-        v-if="!works.length"
-        class="pa-4"
-      >
-        Нет выполненных работ
-      </div>
-
-      <WorkItem
-        v-for="work in works"
-        :key="work.uuid"
-        :work="work"
-      />
+          <template #item.uuid="{ item }">
+            <router-link :to="`/teacher/works/${item.uuid}`">
+              Посмотреть
+            </router-link>
+          </template>
+        </v-data-table>
+      </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import WorksService from '~/services/teacher/works'
-import WorkItem from '~/components/teacher/works/WorkItem.vue'
 export default {
-  middleware: ['teacherOnly'],
-
-  components: {
-    WorkItem
-  },
+  layout: 'teacher',
 
   async asyncData ({ $axios, store }) {
     const works = await WorksService.list($axios)
@@ -55,7 +47,24 @@ export default {
   },
 
   data: () => ({
-    works: []
+    headers: [
+      {
+        text: 'Задание',
+        value: 'task'
+      },
+      {
+        text: 'Студент',
+        value: 'student'
+      },
+      {
+        text: 'Оценка',
+        value: 'score'
+      },
+      {
+        text: 'Работа',
+        value: 'uuid'
+      }
+    ]
   })
 }
 </script>

@@ -1,5 +1,6 @@
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
+import { getAllWorks } from './Work'
 
 function createTeacher ({
   uuid,
@@ -18,17 +19,22 @@ function createStudent ({
   login,
   name,
   type,
-  schoolClass
+  schoolClassUUID
 }) {
   return {
     uuid,
     login,
     name,
     type,
-    schoolClass,
+    schoolClassUUID,
 
     getSchoolClass () {
-      return findSchoolClass({ uuid: schoolClass })
+      return findSchoolClass({ uuid: schoolClassUUID })
+    },
+
+    getWorks () {
+      return getAllWorks()
+        .filter(work => work.studentUUID === uuid)
     }
   }
 }
@@ -39,6 +45,13 @@ function createUser (user) {
   } else {
     return createTeacher(user)
   }
+}
+
+export function allStudents () {
+  const users = db.getData('/users')
+    .filter(student => student.type === 'student')
+
+  return users.map(createUser)
 }
 
 export function findUser (data) {
