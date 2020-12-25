@@ -1,9 +1,9 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
-      fixed
       app
+      permanent
+      expand-on-hover
     >
       <v-list>
         <v-list-item
@@ -28,7 +28,6 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>
         Информатика
       </v-toolbar-title>
@@ -57,25 +56,24 @@ export default {
 
   data () {
     return {
-      drawer: false,
       teacherMenuItems: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-format-list-checkbox',
           title: 'Задания',
           to: '/teacher/tasks'
         },
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-file-check',
           title: 'Работы',
           to: '/teacher/works'
         },
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-account-group',
           title: 'Классы',
           to: '/teacher/classes'
         },
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-account',
           title: 'Ученики',
           to: '/teacher/students'
         }
