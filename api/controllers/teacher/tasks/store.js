@@ -1,6 +1,5 @@
 import getCurrentUser from '../../../middlewares/getCurrentUser'
 import { storeTask } from '../../../models/Task'
-import saveBase64File from '../../../utils/saveBase64File'
 import sanitizeRequestData from './sanitizeRequestData'
 import validateSaveRequest from './validateSaveRequest'
 
@@ -17,10 +16,7 @@ export default async function store (req, res) {
 
   const sanitizedData = sanitizeRequestData(requestBody)
 
-  sanitizedData.file = sanitizedData.file
-    ? await saveBase64File(sanitizedData.file)
-    : sanitizedData.file
-
+  sanitizedData.file = req.file.filename
   sanitizedData.user = user
 
   const task = storeTask(sanitizedData)

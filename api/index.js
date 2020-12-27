@@ -1,4 +1,5 @@
 import express from 'express'
+import multer from 'multer'
 
 import login from './controllers/auth/login'
 import profile from './controllers/auth/profile'
@@ -19,7 +20,15 @@ import setWorkScore from './controllers/teacher/works/setWorkScore'
 
 const app = express()
 
-app.use(express.json({ limit: '50mb' }))
+const storage = multer.diskStorage({
+  destination: 'api/uploads/',
+  filename: (req, file, callback) => {
+    callback(null, (new Date().valueOf()) + '_' + file.originalname)
+  }
+})
+const upload = multer({ storage })
+
+app.use(express.json())
 
 app.all('/test', (req, res) => {
   res.json({ data: 'data' })
@@ -30,7 +39,7 @@ app.get('/auth/user', profile)
 
 app.get('/teacher/tasks', teacherTasks)
 app.get('/teacher/tasks/:uuid', teacherTaskShow)
-app.post('/teacher/tasks', storeTask)
+app.post('/teacher/tasks', upload.single('file'), storeTask)
 app.get('/teacher/works', allWorks)
 app.get('/teacher/works/:workuuid', getWork)
 app.post('/teacher/works/:workuuid/set-score', setWorkScore)

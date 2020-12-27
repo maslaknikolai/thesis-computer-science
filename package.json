@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "preinstall": "which link-module-alias && link-module-alias clean || echo",
     "postinstall": "link-module-alias",
     "dev": "nuxt",
     "build": "nuxt build",
@@ -21,8 +22,10 @@
     "core-js": "^3.6.5",
     "crypto": "^1.0.1",
     "file-type": "^16.0.1",
+    "json-form-data": "^1.7.2",
     "jsonwebtoken": "^8.5.1",
     "link-module-alias": "^1.2.0",
+    "multer": "^1.4.2",
     "node-json-db": "^1.1.0",
     "nuxt": "^2.14.6",
     "uuid": "^8.3.1",

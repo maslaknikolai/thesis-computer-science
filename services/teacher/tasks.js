@@ -1,16 +1,4 @@
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => resolve(reader.result)
-  reader.onerror = error => reject(error)
-})
-
-async function createRequestBody (formData) {
-  return {
-    ...formData,
-    file: formData.file ? await toBase64(formData.file) : formData.file
-  }
-}
+import jsonToFormData from 'json-form-data'
 
 export default {
   table (axios) {
@@ -23,10 +11,14 @@ export default {
       .then(response => response.data.data)
   },
 
-  async store (axios, formData) {
-    const requestBody = await createRequestBody(formData)
+  store (axios, formData) {
+    const requestBody = jsonToFormData(formData)
 
-    return axios.post('/api/teacher/tasks', requestBody)
+    return axios.post('/api/teacher/tasks', requestBody, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
       .catch((error) => {
         if (error.response && error.response.data && error.response.data.errors) {
           return Promise.reject(
