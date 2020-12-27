@@ -1,50 +1,37 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <v-layout justify-space-between>
-        <v-flex>
-          <h1>Задания</h1>
-        </v-flex>
+      <v-card>
+        <v-card-title class="justify-space-between">
+          Задания
+        </v-card-title>
 
-        <v-flex shrink>
-          <v-btn
-            text
-            to="/student/"
-          >
-            <v-icon left>
-              mdi-chevron-left
-            </v-icon>
+        <v-data-table
+          :headers="headers"
+          :items="tasks"
+        >
+          <template #item.score="{ item }">
+            <div v-if="item.score">
+              {{ item.score }}
+            </div>
 
-            Назад
-          </v-btn>
-        </v-flex>
-      </v-layout>
-
-      <div
-        v-if="!tasks.length && !loading"
-        class="pa-4"
-      >
-        Заданий нет
-      </div>
-
-      <TaskItem
-        v-for="task in tasks"
-        :key="task.uuid"
-        :task="task"
-      />
+            <router-link
+              v-else
+              :to="`/student/tasks/do/${item.uuid}`"
+            >
+              Выполнить
+            </router-link>
+          </template>
+        </v-data-table>
+      </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import TasksService from '~/services/student/tasks'
-import TaskItem from '~/components/student/tasks/TaskItem.vue'
+import TasksService from '@/services/student/tasks'
 export default {
-  middleware: ['studentOnly'],
-
-  components: {
-    TaskItem
-  },
+  layout: 'student',
 
   async asyncData ({ $axios, store }) {
     const tasks = await TasksService.index($axios)
@@ -55,7 +42,16 @@ export default {
   },
 
   data: () => ({
-    tasks: []
+    headers: [
+      {
+        text: 'Название',
+        value: 'name'
+      },
+      {
+        text: 'Моя оценка',
+        value: 'score'
+      }
+    ]
   })
 }
 </script>

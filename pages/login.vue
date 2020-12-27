@@ -43,7 +43,6 @@
 
 <script>
 export default {
-  layout: 'no-sidebar',
   middleware: 'auth',
   auth: 'guest',
 

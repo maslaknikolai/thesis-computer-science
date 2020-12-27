@@ -1,31 +1,7 @@
-<template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card>
-        <v-card-title class="headline">
-          Кабинет студента
-        </v-card-title>
-
-        <v-card-subtitle>
-          {{ $store.state.auth.user.name }}. Класс:
-          {{ $store.state.auth.user.schoolClass.name }}
-        </v-card-subtitle>
-
-        <v-card-text>
-          <nuxt-link to="/student/tasks">
-            Задания
-          </nuxt-link>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
-</template>
-
 <script>
 export default {
-  middleware: ['studentOnly'],
-
-  components: {
+  middleware: ({ redirect }) => {
+    redirect('/student/tasks')
   }
 }
 </script>

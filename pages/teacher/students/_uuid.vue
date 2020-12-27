@@ -58,6 +58,8 @@
 import StudentsService from '~/services/teacher/students'
 
 export default {
+  layout: 'teacher',
+
   async asyncData ({ $axios, params }) {
     const student = await StudentsService.show($axios, params.uuid)
 

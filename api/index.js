@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import multer from 'multer'
 
@@ -9,9 +10,9 @@ import showSchoolClass from './controllers/teacher/schoolClasses/show'
 import allStudents from './controllers/teacher/students/list'
 import teacherGetStudent from './controllers/teacher/students/show'
 import teacherTasks from './controllers/teacher/tasks/table'
-import teacherTaskShow from './controllers/teacher/tasks/show'
+import showTeacherTask from './controllers/teacher/tasks/show'
 import storeTask from './controllers/teacher/tasks/store'
-import getAllMyTasks from './controllers/student/tasks/getAllMyTasks'
+import studentTasks from './controllers/student/tasks/list'
 import showStudentTask from './controllers/student/tasks/show'
 import submitStudentTaskWork from './controllers/student/tasks/submitWork'
 import allWorks from './controllers/teacher/works/allWorks'
@@ -20,15 +21,18 @@ import setWorkScore from './controllers/teacher/works/setWorkScore'
 
 const app = express()
 
-const storage = multer.diskStorage({
-  destination: 'api/uploads/',
-  filename: (req, file, callback) => {
-    callback(null, (new Date().valueOf()) + '_' + file.originalname)
-  }
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: 'api/uploads/task-files',
+    filename: (req, file, callback) => {
+      callback(null, (new Date().valueOf()) + '_' + file.originalname)
+    }
+  })
 })
-const upload = multer({ storage })
 
 app.use(express.json())
+
+app.use('/task-files', express.static(path.join(__dirname, 'uploads/task-files')))
 
 app.all('/test', (req, res) => {
   res.json({ data: 'data' })
@@ -38,7 +42,7 @@ app.post('/auth/login', login)
 app.get('/auth/user', profile)
 
 app.get('/teacher/tasks', teacherTasks)
-app.get('/teacher/tasks/:uuid', teacherTaskShow)
+app.get('/teacher/tasks/:uuid', showTeacherTask)
 app.post('/teacher/tasks', upload.single('file'), storeTask)
 app.get('/teacher/works', allWorks)
 app.get('/teacher/works/:workuuid', getWork)
@@ -48,8 +52,8 @@ app.get('/teacher/students/:uuid', teacherGetStudent)
 app.get('/teacher/classes', allSchoolClasses)
 app.get('/teacher/classes/:uuid', showSchoolClass)
 
-app.get('/student/my-tasks', getAllMyTasks)
-app.get('/student/my-tasks/:uuid', showStudentTask)
-app.post('/student/my-tasks/:uuid', submitStudentTaskWork)
+app.get('/student/tasks', studentTasks)
+app.get('/student/tasks/:uuid', showStudentTask)
+app.post('/student/tasks/:uuid', submitStudentTaskWork)
 
 export default app

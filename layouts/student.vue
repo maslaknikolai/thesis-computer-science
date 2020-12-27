@@ -1,9 +1,9 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
-      fixed
       app
+      permanent
+      expand-on-hover
     >
       <v-list>
         <v-list-item
@@ -28,7 +28,6 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>
         Информатика
       </v-toolbar-title>
@@ -57,10 +56,9 @@ export default {
 
   data () {
     return {
-      drawer: false,
       studentMenuItems: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-format-list-checkbox',
           title: 'Задания',
           to: '/student/tasks'
         }

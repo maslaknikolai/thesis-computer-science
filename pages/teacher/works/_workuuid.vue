@@ -116,6 +116,8 @@
 import WorksService from '~/services/teacher/works'
 
 export default {
+  layout: 'teacher',
+
   async asyncData ({ $axios, params }) {
     const work = await WorksService.show($axios, params.workuuid)
 

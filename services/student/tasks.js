@@ -1,14 +1,14 @@
 export default {
   index (axios) {
-    return axios.get('/api/student/my-tasks')
+    return axios.get('/api/student/tasks')
       .then(response => response.data.data)
   },
   show (axios, uuid) {
-    return axios.get(`/api/student/my-tasks/${uuid}`)
+    return axios.get(`/api/student/tasks/${uuid}`)
       .then(response => response.data.data)
   },
   submitWork (axios, formData, taskUUID) {
-    return axios.post(`/api/student/my-tasks/${taskUUID}`, formData)
+    return axios.post(`/api/student/tasks/${taskUUID}`, formData)
       .catch((error) => {
         if (error.response && error.response.data && error.response.data.message) {
           return Promise.reject(
