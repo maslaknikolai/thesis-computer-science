@@ -3,9 +3,9 @@ import { findUser } from './models/User'
 
 export function signInUser ({
   login,
-  code
+  password
 }) {
-  const user = findUser({ login, code })
+  const user = findUser({ login, password })
 
   return jwt.sign({
     uuid: user.uuid

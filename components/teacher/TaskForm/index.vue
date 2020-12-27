@@ -47,12 +47,14 @@
 </template>
 
 <script>
+import SchoolClassesLoader from '@/components/teacher/SchoolClassesLoader.vue'
 import createQuestion from './createQuestion'
 import TestQuestions from './TestQuestions.vue'
 
 export default {
   components: {
-    TestQuestions
+    TestQuestions,
+    SchoolClassesLoader
   },
   props: {
     task: {

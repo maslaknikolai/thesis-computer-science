@@ -1,3 +1,5 @@
+import createValidationError from '@/utils/createValidationError'
+
 export default {
   list (axios) {
     return axios.get('/api/teacher/students')
@@ -6,5 +8,13 @@ export default {
   show (axios, workUUID) {
     return axios.get(`api/teacher/students/${workUUID}`)
       .then(response => response.data.data)
+  },
+  store (axios, formData) {
+    return axios.post('api/teacher/students', formData)
+      .catch(createValidationError)
+  },
+  update (axios, studentUUID, formData) {
+    return axios.put(`api/teacher/students/${studentUUID}`, formData)
+      .catch(createValidationError)
   }
 }

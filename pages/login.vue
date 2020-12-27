@@ -20,11 +20,11 @@
           />
 
           <v-text-field
-            v-model="formData.code"
-            :error-messages="errors.code"
+            v-model="formData.password"
+            :error-messages="errors.password"
             label="Пароль"
             type="password"
-            @focus="formData.code = null"
+            @focus="formData.password = null"
           />
         </v-card-text>
 
@@ -51,7 +51,7 @@ export default {
 
     formData: {
       login: '',
-      code: ''
+      password: ''
     },
     errors: {}
   }),

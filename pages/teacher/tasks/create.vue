@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import TasksService from '~/services/teacher/tasks'
-import TaskForm from '~/components/TaskForm/index.vue'
+import TaskForm from '@/components/teacher/TaskForm/index.vue'
+import TasksService from '@/services/teacher/tasks'
 
 export default {
   layout: 'teacher',

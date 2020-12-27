@@ -1,22 +1,22 @@
-import { signInUser } from '../../AuthManager'
+import { signInUser } from '@/AuthManager'
 
 export default function login (req, res) {
   const {
     login,
-    code
+    password
   } = req.body
 
-  if (!login || !code) {
+  if (!login || !password) {
     res.status(422)
     return res.json({
       errors: {
-        login: ['Заполните поле "логин" и поле "код"'],
-        code: ['Заполните поле "логин" и поле "код"']
+        login: ['Заполните поле "логин" и поле "пароль"'],
+        password: ['Заполните поле "логин" и поле "пароль"']
       }
     })
   }
 
-  const token = signInUser({ login, code })
+  const token = signInUser({ login, password })
 
   res.json({ token })
 }

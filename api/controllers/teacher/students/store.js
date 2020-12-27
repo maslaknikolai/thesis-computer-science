@@ -1,11 +1,8 @@
-import getCurrentUser from '@/middlewares/getCurrentUser'
-import { storeTask } from '@/models/Task'
+import { storeStudent } from '@/models/User'
 import sanitizeRequestData from './sanitizeRequestData'
 import validateSaveRequest from './validateSaveRequest'
 
-export default async function store (req, res) {
-  const user = await getCurrentUser(req)
-
+export default function store (req, res) {
   const requestBody = req.body
   const validated = validateSaveRequest(requestBody)
 
@@ -16,10 +13,7 @@ export default async function store (req, res) {
 
   const sanitizedData = sanitizeRequestData(requestBody)
 
-  sanitizedData.file = req.file.filename
-  sanitizedData.user = user
-
-  storeTask(sanitizedData)
+  storeStudent(sanitizedData)
 
   res.status(204).send()
 }

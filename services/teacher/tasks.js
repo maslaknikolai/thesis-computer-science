@@ -1,4 +1,5 @@
 import jsonToFormData from 'json-form-data'
+import createValidationError from '@/utils/createValidationError'
 
 export default {
   table (axios) {
@@ -19,19 +20,6 @@ export default {
         'Content-Type': 'multipart/form-data'
       }
     })
-      .catch((error) => {
-        if (error.response && error.response.data && error.response.data.errors) {
-          return Promise.reject(
-            Object.assign(
-              new Error('Validation error'),
-              {
-                messages: error.response.data.errors
-              }
-            )
-          )
-        }
-
-        return Promise.reject(error)
-      })
+      .catch(createValidationError)
   }
 }

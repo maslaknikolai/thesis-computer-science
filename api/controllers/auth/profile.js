@@ -1,4 +1,4 @@
-import getCurrentUser from '../../middlewares/getCurrentUser'
+import getCurrentUser from '@/middlewares/getCurrentUser'
 
 export default async function getUser (req, res) {
   const user = await getCurrentUser(req)

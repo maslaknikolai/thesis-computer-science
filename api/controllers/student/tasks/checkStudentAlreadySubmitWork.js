@@ -1,4 +1,4 @@
-import { findWork } from '../../../models/Work'
+import { findWork } from '@/models/Work'
 
 export default function checkStudentAlreadySubmitWork (student, task) {
   const work = findWork({

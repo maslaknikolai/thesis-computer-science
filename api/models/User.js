@@ -1,6 +1,16 @@
+import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
+
+function updateUserData (workUUID, data) {
+  const index = db.getIndex('/users', workUUID, 'uuid')
+  let userRaw = db.getData(`/users[${index}]`)
+
+  userRaw = { ...userRaw, ...data }
+
+  db.push(`/users[${index}]`, userRaw, true)
+}
 
 function createTeacher ({
   uuid,
@@ -35,6 +45,25 @@ function createStudent ({
     getWorks () {
       return getAllWorks()
         .filter(work => work.studentUUID === uuid)
+    },
+
+    setLogin (login) {
+      updateUserData(uuid, { login })
+      this.login = login
+    },
+
+    setName (name) {
+      updateUserData(uuid, { name })
+      this.name = name
+    },
+
+    setSchoolClassUUID (schoolClassUUID) {
+      updateUserData(uuid, { schoolClassUUID })
+      this.schoolClassUUID = schoolClassUUID
+    },
+
+    setPassword (password) {
+      updateUserData(uuid, { password })
     }
   }
 }
@@ -68,4 +97,24 @@ export function findUser (data) {
   }
 
   return createUser(user)
+}
+
+export function storeStudent ({
+  name,
+  login,
+  password,
+  schoolClassUUID
+}) {
+  const student = {
+    uuid: uuidv4(),
+    name,
+    login,
+    password,
+    schoolClassUUID,
+    type: 'student'
+  }
+
+  db.push('/users[]', student, true)
+
+  return createUser(student)
 }

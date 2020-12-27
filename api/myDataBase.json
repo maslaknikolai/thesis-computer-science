@@ -4,15 +4,31 @@
             "uuid": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
             "type": "teacher",
             "login": "test",
-            "code": "123"
+            "password": "123"
         },
         {
             "uuid": "1",
             "type": "student",
             "login": "st",
-            "code": "st",
+            "password": "st",
             "name": "Иванов Ваня",
             "schoolClassUUID": "1"
+        },
+        {
+            "uuid": "08650d9c-45a5-4b41-9028-ebf7cbd320ea",
+            "name": "Егор Петров1",
+            "login": "egor",
+            "password": "egor",
+            "schoolClassUUID": "1",
+            "type": "student"
+        },
+        {
+            "uuid": "93cd5189-facb-4e90-85bb-d9b077ea7f9a",
+            "name": "Николай Махалай",
+            "login": "nik",
+            "password": "nik",
+            "schoolClassUUID": "1",
+            "type": "student"
         }
     ],
     "tasks": [

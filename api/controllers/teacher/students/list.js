@@ -7,6 +7,7 @@ export default function list (req, res) {
     data: students.map(student => ({
       uuid: student.uuid,
       name: student.name,
+      login: student.login,
       schoolClass: (() => {
         const { uuid, name } = student.getSchoolClass()
         return {

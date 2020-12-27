@@ -8,6 +8,8 @@ import profile from './controllers/auth/profile'
 import allSchoolClasses from './controllers/teacher/schoolClasses/list'
 import showSchoolClass from './controllers/teacher/schoolClasses/show'
 import allStudents from './controllers/teacher/students/list'
+import createStudent from './controllers/teacher/students/store'
+import updateStudent from './controllers/teacher/students/update'
 import teacherGetStudent from './controllers/teacher/students/show'
 import teacherTasks from './controllers/teacher/tasks/table'
 import showTeacherTask from './controllers/teacher/tasks/show'
@@ -45,9 +47,11 @@ app.get('/teacher/tasks', teacherTasks)
 app.get('/teacher/tasks/:uuid', showTeacherTask)
 app.post('/teacher/tasks', upload.single('file'), storeTask)
 app.get('/teacher/works', allWorks)
-app.get('/teacher/works/:workuuid', getWork)
-app.post('/teacher/works/:workuuid/set-score', setWorkScore)
+app.get('/teacher/works/:uuid', getWork)
+app.post('/teacher/works/:uuid/set-score', setWorkScore)
 app.get('/teacher/students', allStudents)
+app.post('/teacher/students', createStudent)
+app.put('/teacher/students/:uuid', updateStudent)
 app.get('/teacher/students/:uuid', teacherGetStudent)
 app.get('/teacher/classes', allSchoolClasses)
 app.get('/teacher/classes/:uuid', showSchoolClass)

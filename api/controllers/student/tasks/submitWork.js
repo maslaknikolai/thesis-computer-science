@@ -1,6 +1,6 @@
-import getCurrentUser from '../../../middlewares/getCurrentUser'
-import { findTask } from '../../../models/Task'
-import { storeWork } from '../../../models/Work'
+import getCurrentUser from '@/middlewares/getCurrentUser'
+import { findTask } from '@/models/Task'
+import { storeWork } from '@/models/Work'
 import checkStudentAlreadySubmitWork from './checkStudentAlreadySubmitWork'
 
 export default async function submitWork (req, res) {

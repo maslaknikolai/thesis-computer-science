@@ -19,11 +19,6 @@ export default function validateSaveRequest (requestBody) {
     result = false
   }
 
-  if (!requestBody.forSchoolClasses || !requestBody.forSchoolClasses.length) {
-    errors.forSchoolClasses.push('Укажите для каких классов предназначено задание')
-    result = false
-  }
-
   if (!requestBody.type) {
     errors.type.push('Укажите тип задания')
     result = false
