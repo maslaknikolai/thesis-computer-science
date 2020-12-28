@@ -67,7 +67,7 @@ export default {
   data: () => ({
     headers: [
       {
-        text: 'Имя',
+        text: 'ФИО ученика',
         value: 'name'
       },
       {

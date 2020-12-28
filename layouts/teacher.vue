@@ -6,6 +6,14 @@
       expand-on-hover
     >
       <v-list>
+        <v-list-item link>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              Учитель
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-list-item
           v-for="(item, i) in teacherMenuItems"
           :key="i"

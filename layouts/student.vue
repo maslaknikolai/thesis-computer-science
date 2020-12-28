@@ -6,6 +6,18 @@
       expand-on-hover
     >
       <v-list>
+        <v-list-item link>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              {{ $store.state.auth.user.name }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              Класс:
+              {{ $store.state.auth.user.schoolClass.name }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-list-item
           v-for="(item, i) in studentMenuItems"
           :key="i"
@@ -31,6 +43,7 @@
       <v-toolbar-title>
         Информатика
       </v-toolbar-title>
+
       <v-spacer />
       <v-btn
         icon

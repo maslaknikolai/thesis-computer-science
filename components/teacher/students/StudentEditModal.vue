@@ -29,7 +29,7 @@
         <v-text-field
           v-model="formData.name"
           :error-messages="errors.name"
-          label="Имя ученика"
+          label="ФИО ученика"
         />
 
         <v-text-field

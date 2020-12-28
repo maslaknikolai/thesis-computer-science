@@ -30,6 +30,14 @@ export default function createTask ({
       return forSchoolClasses.map(
         schoolClassUUID => findSchoolClass({ uuid: schoolClassUUID })
       )
+    },
+
+    remove () {
+      const index = db.getIndex('/tasks', uuid, 'uuid')
+      db.delete(`/tasks[${index}]`, true)
+
+      const works = this.getWorks()
+      works.forEach(work => work.remove())
     }
   }
 }

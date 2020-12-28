@@ -16,7 +16,7 @@
         },
         {
             "uuid": "08650d9c-45a5-4b41-9028-ebf7cbd320ea",
-            "name": "Егор Петров1",
+            "name": "Егор Петров",
             "login": "egor",
             "password": "sha1$f14bbf64$1$7b1a74c3e34b84fef0755b90183ea0c2c3636411",
             "schoolClassUUID": "1",
@@ -92,28 +92,6 @@
                         {
                             "text": "Бактерии",
                             "isCorrect": false
-                        }
-                    ]
-                }
-            ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        },
-        {
-            "uuid": "675e9bf8-2878-453a-82d5-86d9a58d367b",
-            "name": "123",
-            "file": "1609096430773_65f55cea-f240-4237-95e8-7932ea5cfd5f.zip",
-            "type": "test",
-            "forSchoolClasses": [
-                "1"
-            ],
-            "questions": [
-                {
-                    "text": "ef",
-                    "isMultiple": "0",
-                    "options": [
-                        {
-                            "text": "123",
-                            "isCorrect": "0"
                         }
                     ]
                 }

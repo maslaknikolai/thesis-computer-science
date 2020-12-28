@@ -39,6 +39,11 @@ export function createWork ({
     setScore (score) {
       updateWorkData(uuid, { score })
       this.score = score
+    },
+
+    remove () {
+      const index = db.getIndex('/works', uuid, 'uuid')
+      db.delete(`/works[${index}]`, true)
     }
   }
 }

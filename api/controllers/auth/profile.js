@@ -10,5 +10,29 @@ export default async function getUser (req, res) {
     })
   }
 
-  res.json({ user })
+  if (user.type === 'student') {
+    return res.json({
+      user: {
+        uuid: user.uuid,
+        name: user.name,
+        type: user.type,
+        login: user.login,
+        schoolClass: (() => {
+          const { uuid, name } = user.getSchoolClass()
+          return {
+            uuid,
+            name
+          }
+        })()
+      }
+    })
+  }
+
+  res.json({
+    user: {
+      uuid: user.uuid,
+      type: user.type,
+      login: user.login
+    }
+  })
 }

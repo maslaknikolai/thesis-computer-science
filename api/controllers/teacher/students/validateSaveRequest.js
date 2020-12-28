@@ -8,7 +8,7 @@ export default function validateSaveRequest (requestBody, requestType = 'store')
   }
 
   if (!requestBody.name) {
-    errors.name.push('Укажите имя ученика')
+    errors.name.push('Укажите ФИО ученика')
     result = false
   }
 

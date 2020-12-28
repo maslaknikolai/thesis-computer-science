@@ -21,5 +21,9 @@ export default {
       }
     })
       .catch(createValidationError)
+  },
+
+  remove (axios, uuid) {
+    return axios.delete(`/api/teacher/tasks/${uuid}`)
   }
 }

@@ -25,7 +25,7 @@
           Ученики:
           <v-data-table
             :headers="[
-              { text: 'Имя', 'value': 'name' },
+              { text: 'ФИО ученика', 'value': 'name' },
             ]"
             :items="schoolClass.students"
           >
