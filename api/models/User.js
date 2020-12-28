@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import passwordHash from 'password-hash'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
@@ -109,7 +110,7 @@ export function storeStudent ({
     uuid: uuidv4(),
     name,
     login,
-    password,
+    password: passwordHash.generate(password),
     schoolClassUUID,
     type: 'student'
   }

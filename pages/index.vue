@@ -1,6 +1,6 @@
 <script>
 export default {
-  middleware: (context) => {
+  middleware: ['auth', (context) => {
     const userRole = context.store.state.auth.user.type
 
     if (userRole === 'teacher') {
@@ -10,6 +10,6 @@ export default {
     if (userRole === 'student') {
       return context.redirect('/student')
     }
-  }
+  }]
 }
 </script>

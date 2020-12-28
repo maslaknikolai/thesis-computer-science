@@ -4,13 +4,13 @@
             "uuid": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
             "type": "teacher",
             "login": "test",
-            "password": "123"
+            "password": "sha1$e1ba16bb$1$483868368021f53dc7393b1f418dd5c4e7ccac7b"
         },
         {
             "uuid": "1",
             "type": "student",
             "login": "st",
-            "password": "st",
+            "password": "sha1$ab6d7914$1$9c85342e0aec0cfca4578d10fb6bdfd1c8fa894e",
             "name": "Иванов Ваня",
             "schoolClassUUID": "1"
         },
@@ -18,7 +18,7 @@
             "uuid": "08650d9c-45a5-4b41-9028-ebf7cbd320ea",
             "name": "Егор Петров1",
             "login": "egor",
-            "password": "egor",
+            "password": "sha1$f14bbf64$1$7b1a74c3e34b84fef0755b90183ea0c2c3636411",
             "schoolClassUUID": "1",
             "type": "student"
         },
@@ -26,7 +26,7 @@
             "uuid": "93cd5189-facb-4e90-85bb-d9b077ea7f9a",
             "name": "Николай Махалай",
             "login": "nik",
-            "password": "nik",
+            "password": "sha1$251380df$1$d6f5ce89a5090d7ae1a14ca7eeac27c131450450",
             "schoolClassUUID": "1",
             "type": "student"
         }

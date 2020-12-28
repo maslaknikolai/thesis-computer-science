@@ -18,5 +18,12 @@ export default function login (req, res) {
 
   const token = signInUser({ login, password })
 
+  if (!token) {
+    res.status(422)
+    return res.json({
+      message: 'Пользователь не найден'
+    })
+  }
+
   res.json({ token })
 }

@@ -61,9 +61,15 @@ export default {
       this.loading = true
       this.$auth.loginWith('local', { data: this.formData })
         .catch((error) => {
-          try {
-            this.errors = error.response.data.errors
-          } catch {}
+          if (error.response && error.response.data) {
+            if (error.response.data.errors) {
+              this.errors = error.response.data.errors
+            }
+
+            if (error.response.data.message) {
+              this.$noty.error(error.response.data.message)
+            }
+          }
         })
         .finally(() => {
           this.loading = false

@@ -28,6 +28,7 @@
     "multer": "^1.4.2",
     "node-json-db": "^1.1.0",
     "nuxt": "^2.14.6",
+    "password-hash": "^1.2.2",
     "uuid": "^8.3.1",
     "vuejs-noty": "^0.1.3"
   },
