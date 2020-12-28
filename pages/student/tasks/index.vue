@@ -10,9 +10,9 @@
           :headers="headers"
           :items="tasks"
         >
-          <template #item.score="{ item }">
-            <div v-if="item.score">
-              {{ item.score }}
+          <template #item.work="{ item }">
+            <div v-if="item.work">
+              {{ item.work.score || 'На проверке' }}
             </div>
 
             <router-link
@@ -49,7 +49,7 @@ export default {
       },
       {
         text: 'Моя оценка',
-        value: 'score'
+        value: 'work'
       }
     ]
   })

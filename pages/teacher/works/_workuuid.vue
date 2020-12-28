@@ -130,7 +130,7 @@ export default {
   }),
   methods: {
     async setScore () {
-      this.work = await WorksService.setScore(this.$axios, this.$route.params.workuuid, this.work.score)
+      await WorksService.setScore(this.$axios, this.$route.params.workuuid, this.work.score)
       this.$noty.success('Оценка поставлена')
     }
   }

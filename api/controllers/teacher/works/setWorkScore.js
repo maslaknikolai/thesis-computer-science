@@ -5,15 +5,5 @@ export default function setWorkScore (req, res) {
 
   work.setScore(req.body.score)
 
-  res.json({
-    data: {
-      uuid: work.uuid,
-      taskUUID: work.taskUUID,
-      text: work.text,
-      answers: work.answers,
-      score: work.score,
-      student: work.getStudent(),
-      task: work.getTask()
-    }
-  })
+  res.status(204).send()
 }

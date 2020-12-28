@@ -11,13 +11,16 @@ export default async function list (req, res) {
         type: task.type,
         name: task.name,
         createdAt: task.createdAt,
-        score: (() => {
+        work: (() => {
           const work = findWork({
             studentUUID: student.uuid,
             taskUUID: task.uuid
           })
 
-          return work.score
+          return work ? {
+            uuid: work.uuid,
+            score: work.score
+          } : work
         })()
       }))
   })
