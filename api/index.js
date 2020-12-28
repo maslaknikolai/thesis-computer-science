@@ -7,6 +7,8 @@ import profile from './controllers/auth/profile'
 
 import allSchoolClasses from './controllers/teacher/schoolClasses/list'
 import showSchoolClass from './controllers/teacher/schoolClasses/show'
+import createSchoolClass from './controllers/teacher/schoolClasses/store'
+import updateSchoolClass from './controllers/teacher/schoolClasses/update'
 import allStudents from './controllers/teacher/students/list'
 import createStudent from './controllers/teacher/students/store'
 import updateStudent from './controllers/teacher/students/update'
@@ -55,6 +57,8 @@ app.put('/teacher/students/:uuid', updateStudent)
 app.get('/teacher/students/:uuid', teacherGetStudent)
 app.get('/teacher/classes', allSchoolClasses)
 app.get('/teacher/classes/:uuid', showSchoolClass)
+app.post('/teacher/classes/', createSchoolClass)
+app.put('/teacher/classes/:uuid', updateSchoolClass)
 
 app.get('/student/tasks', studentTasks)
 app.get('/student/tasks/:uuid', showStudentTask)

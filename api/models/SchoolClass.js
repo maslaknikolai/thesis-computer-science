@@ -3,6 +3,15 @@ import { v4 as uuidv4 } from 'uuid'
 import db from '../dbProvider'
 import { allStudents } from './User'
 
+function updateSchoolClassData (workUUID, data) {
+  const index = db.getIndex('/schoolClasses', workUUID, 'uuid')
+  let schoolClassRaw = db.getData(`/schoolClasses[${index}]`)
+
+  schoolClassRaw = { ...schoolClassRaw, ...data }
+
+  db.push(`/schoolClasses[${index}]`, schoolClassRaw, true)
+}
+
 export default function createSchoolClass ({
   uuid,
   name
@@ -21,6 +30,11 @@ export default function createSchoolClass ({
     getStudents () {
       return allStudents()
         .filter(student => student.schoolClassUUID === uuid)
+    },
+
+    setName (name) {
+      updateSchoolClassData(uuid, { name })
+      this.name = name
     }
   }
 }
