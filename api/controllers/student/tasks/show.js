@@ -10,6 +10,7 @@ export default function show (req, res) {
       file: task.file ? `/api/task-files/${task.file}` : task.file,
       type: task.type,
       forSchoolClasses: task.forSchoolClasses,
+      createdAt: task.createdAt,
       questions: task.questions ? task.questions.map(taskQuestion => ({
         text: taskQuestion.text,
         isMultiple: taskQuestion.isMultiple,

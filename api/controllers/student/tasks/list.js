@@ -10,6 +10,7 @@ export default async function list (req, res) {
         uuid: task.uuid,
         type: task.type,
         name: task.name,
+        createdAt: task.createdAt,
         score: (() => {
           const work = findWork({
             studentUUID: student.uuid,

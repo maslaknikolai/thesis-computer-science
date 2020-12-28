@@ -96,7 +96,8 @@
                     ]
                 }
             ],
-            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+            "user": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+            "createdAt": 1609175732272
         }
     ],
     "works": [
@@ -109,7 +110,8 @@
                 0,
                 1
             ],
-            "score": 2
+            "score": 2,
+            "createdAt": 1609175755700
         }
     ],
     "schoolClasses": [

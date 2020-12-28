@@ -7,6 +7,7 @@ export default function teacherTasks (req, res) {
     data: tasks.map(task => ({
       uuid: task.uuid,
       name: task.name,
+      createdAt: task.createdAt,
       forSchoolClasses: task.getSchoolClasses().map(schoolClass => schoolClass.name)
     }))
   })

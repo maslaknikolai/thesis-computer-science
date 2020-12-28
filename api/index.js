@@ -20,8 +20,8 @@ import removeTask from './controllers/teacher/tasks/remove'
 import studentTasks from './controllers/student/tasks/list'
 import showStudentTask from './controllers/student/tasks/show'
 import submitStudentTaskWork from './controllers/student/tasks/submitWork'
-import allWorks from './controllers/teacher/works/allWorks'
-import getWork from './controllers/teacher/works/getWork'
+import allWorks from './controllers/teacher/works/list'
+import getWork from './controllers/teacher/works/show'
 import setWorkScore from './controllers/teacher/works/setWorkScore'
 
 const app = express()

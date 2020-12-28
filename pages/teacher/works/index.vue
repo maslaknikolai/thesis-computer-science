@@ -61,6 +61,10 @@ export default {
         value: 'score'
       },
       {
+        text: 'Дата сдачи',
+        value: 'createdAt'
+      },
+      {
         text: 'Работа',
         value: 'uuid'
       }

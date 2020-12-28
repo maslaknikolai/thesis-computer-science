@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
@@ -10,7 +11,8 @@ export default function createTask ({
   type,
   forSchoolClasses,
   questions,
-  user
+  user,
+  createdAt
 }) {
   return {
     uuid,
@@ -20,6 +22,7 @@ export default function createTask ({
     forSchoolClasses,
     questions,
     user,
+    createdAt: moment(createdAt).format('DD.MM.YYYY HH:mm:ss'),
 
     getWorks () {
       return getAllWorks()
@@ -79,7 +82,8 @@ export function storeTask ({
     type,
     forSchoolClasses,
     questions,
-    user: user.uuid
+    user: user.uuid,
+    createdAt: new Date().valueOf()
   }
 
   db.push('/tasks[]', task, true)

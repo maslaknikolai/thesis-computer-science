@@ -61,6 +61,10 @@ export default {
         value: 'forSchoolClasses'
       },
       {
+        text: 'Дата создания',
+        value: 'createdAt'
+      },
+      {
         text: 'Действия',
         value: 'actions',
         width: '100px'

@@ -1,6 +1,6 @@
 import { getAllWorks } from '@/models/Work'
 
-export default function allWorks (req, res) {
+export default function list (req, res) {
   const works = getAllWorks()
 
   res.json({
@@ -8,6 +8,7 @@ export default function allWorks (req, res) {
       return {
         uuid: work.uuid,
         score: work.score,
+        createdAt: work.createdAt,
         student: (() => {
           const student = work.getStudent()
           return {

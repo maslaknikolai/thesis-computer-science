@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment'
 import db from '../dbProvider'
 import calculateTaskScore from '../utils/calculateTaskScore'
 import { findTask } from './Task'
@@ -19,7 +20,8 @@ export function createWork ({
   taskUUID,
   answers,
   text,
-  score
+  score,
+  createdAt
 }) {
   return {
     uuid,
@@ -28,6 +30,7 @@ export function createWork ({
     answers,
     text,
     score,
+    createdAt: moment(createdAt).format('DD.MM.YYYY HH:mm:ss'),
 
     getStudent () {
       return findUser({ uuid: studentUUID })
@@ -65,14 +68,16 @@ export function storeWork ({
       studentUUID: student.uuid,
       taskUUID: task.uuid,
       answers,
-      score: calculateTaskScore(task, answers)
+      score: calculateTaskScore(task, answers),
+      createdAt: new Date().valueOf()
     }
     : {
       uuid: uuidv4(),
       studentUUID: student.uuid,
       taskUUID: task.uuid,
       text,
-      score: null
+      score: null,
+      createdAt: new Date().valueOf()
     }
 
   db.push('/works[]', work, true)

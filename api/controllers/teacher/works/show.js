@@ -1,6 +1,6 @@
 import { findWork } from '@/models/Work'
 
-export default function getWork (req, res) {
+export default function show (req, res) {
   const work = findWork({ uuid: req.params.uuid })
 
   res.json({
@@ -10,6 +10,7 @@ export default function getWork (req, res) {
       text: work.text,
       answers: work.answers,
       score: work.score,
+      createdAt: work.createdAt,
       student: (() => {
         const student = work.getStudent()
         return {
