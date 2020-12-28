@@ -4,7 +4,7 @@ export default function calculateTaskScore (task, answers) {
   const rightAnswers = answers.filter((answer, questionIndex) => {
     const question = task.questions[questionIndex]
     if (question.isMultiple) {
-      return answer.every((checkState, i) => question.options[i] === checkState)
+      return answer.every((checkState, i) => question.options[i].isCorrect === checkState)
     }
 
     return question.options.findIndex(option => option.isCorrect) === answer

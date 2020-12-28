@@ -10,11 +10,11 @@ export default function sanitizeRequestData (requestBody) {
     body.questions = requestBody.questions.map(
       question => ({
         text: question.text,
-        isMultiple: question.isMultiple,
+        isMultiple: Boolean(Number(question.isMultiple)),
         options: question.options.map(
           option => ({
             text: option.text,
-            isCorrect: option.isCorrect
+            isCorrect: Boolean(Number(option.isCorrect))
           })
         )
       })
