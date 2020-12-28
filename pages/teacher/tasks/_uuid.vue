@@ -23,7 +23,7 @@
 
         <v-card-text>
           Для классов:
-          <div
+          <span
             v-for="(schoolClass, i) in task.forSchoolClasses"
             :key="schoolClass.uuid"
           >
@@ -32,10 +32,11 @@
             >
               {{ schoolClass.name }}
             </router-link>
-            <div v-if="i !== task.forSchoolClasses.length - 1">
-              |
-            </div>
-          </div>
+
+            <template v-if="i !== task.forSchoolClasses.length - 1">
+              ,
+            </template>
+          </span>
 
           <br>
 

@@ -16,7 +16,10 @@ export default async function store (req, res) {
 
   const sanitizedData = sanitizeRequestData(requestBody)
 
-  sanitizedData.file = req.file.filename
+  if (req.file) {
+    sanitizedData.file = req.file.filename
+  }
+
   sanitizedData.user = user
 
   storeTask(sanitizedData)
