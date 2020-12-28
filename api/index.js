@@ -9,9 +9,11 @@ import allSchoolClasses from './controllers/teacher/schoolClasses/list'
 import showSchoolClass from './controllers/teacher/schoolClasses/show'
 import createSchoolClass from './controllers/teacher/schoolClasses/store'
 import updateSchoolClass from './controllers/teacher/schoolClasses/update'
+import removeSchoolClass from './controllers/teacher/schoolClasses/remove'
 import allStudents from './controllers/teacher/students/list'
 import createStudent from './controllers/teacher/students/store'
 import updateStudent from './controllers/teacher/students/update'
+import removeStudent from './controllers/teacher/students/remove'
 import teacherGetStudent from './controllers/teacher/students/show'
 import teacherTasks from './controllers/teacher/tasks/table'
 import showTeacherTask from './controllers/teacher/tasks/show'
@@ -56,9 +58,11 @@ app.post('/teacher/works/:uuid/set-score', setWorkScore)
 app.get('/teacher/students', allStudents)
 app.post('/teacher/students', createStudent)
 app.put('/teacher/students/:uuid', updateStudent)
+app.delete('/teacher/students/:uuid', removeStudent)
 app.get('/teacher/students/:uuid', teacherGetStudent)
 app.get('/teacher/classes', allSchoolClasses)
 app.get('/teacher/classes/:uuid', showSchoolClass)
+app.delete('/teacher/classes/:uuid', removeSchoolClass)
 app.post('/teacher/classes/', createSchoolClass)
 app.put('/teacher/classes/:uuid', updateSchoolClass)
 

@@ -65,6 +65,14 @@ function createStudent ({
 
     setPassword (password) {
       updateUserData(uuid, { password: passwordHash.generate(password) })
+    },
+
+    remove () {
+      const index = db.getIndex('/users', uuid, 'uuid')
+      db.delete(`/users[${index}]`, true)
+
+      const works = this.getWorks()
+      works.forEach(work => work.remove())
     }
   }
 }

@@ -33,6 +33,19 @@
               mdi-pencil
             </v-icon>
           </template>
+
+          <template #item.actions="{ item }">
+            <v-icon
+              small
+              class="mr-2"
+              @click="$confirm(
+                'Вы действительно хотите удалить класс? Все ученики находящиеся в нем будут также удалены. Также будут удалены задания созданые только для этого класса',
+                () => remove(item)
+              )"
+            >
+              mdi-delete
+            </v-icon>
+          </template>
         </v-data-table>
       </v-card>
     </v-col>
@@ -77,6 +90,10 @@ export default {
   methods: {
     async updateTable () {
       this.schoolClasses = await SchoolClassesService.list(this.$axios)
+    },
+    async remove (schoolClass) {
+      await SchoolClassesService.remove(this.$axios, schoolClass.uuid)
+      this.updateTable()
     }
   }
 }

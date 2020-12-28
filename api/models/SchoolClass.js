@@ -35,6 +35,23 @@ export default function createSchoolClass ({
     setName (name) {
       updateSchoolClassData(uuid, { name })
       this.name = name
+    },
+
+    remove () {
+      const index = db.getIndex('/schoolClasses', uuid, 'uuid')
+      db.delete(`/schoolClasses[${index}]`, true)
+
+      const students = this.getStudents()
+      students.forEach(student => student.remove())
+
+      const tasks = this.getTasks()
+      tasks.forEach((task) => {
+        task.setForSchoolClasses(task.forSchoolClasses.filter(item => item !== this.uuid))
+
+        if (task.forSchoolClasses.length === 0) {
+          task.remove()
+        }
+      })
     }
   }
 }

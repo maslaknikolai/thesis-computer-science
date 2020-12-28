@@ -4,6 +4,15 @@ import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
 
+function updateTaskData (taskUUID, data) {
+  const index = db.getIndex('/tasks', taskUUID, 'uuid')
+  let taskRaw = db.getData(`/tasks[${index}]`)
+
+  taskRaw = { ...taskRaw, ...data }
+
+  db.push(`/tasks[${index}]`, taskRaw, true)
+}
+
 export default function createTask ({
   uuid,
   name,
@@ -33,6 +42,11 @@ export default function createTask ({
       return forSchoolClasses.map(
         schoolClassUUID => findSchoolClass({ uuid: schoolClassUUID })
       )
+    },
+
+    setForSchoolClasses (forSchoolClasses) {
+      updateTaskData(uuid, { forSchoolClasses })
+      this.forSchoolClasses = forSchoolClasses
     },
 
     remove () {

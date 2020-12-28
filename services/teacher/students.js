@@ -16,5 +16,8 @@ export default {
   update (axios, studentUUID, formData) {
     return axios.put(`api/teacher/students/${studentUUID}`, formData)
       .catch(createValidationError)
+  },
+  remove (axios, uuid) {
+    return axios.delete(`/api/teacher/students/${uuid}`)
   }
 }
