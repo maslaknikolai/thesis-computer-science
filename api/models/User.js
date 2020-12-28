@@ -64,7 +64,7 @@ function createStudent ({
     },
 
     setPassword (password) {
-      updateUserData(uuid, { password })
+      updateUserData(uuid, { password: passwordHash.generate(password) })
     }
   }
 }
