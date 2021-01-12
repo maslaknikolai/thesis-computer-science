@@ -2,7 +2,7 @@ import jsonToFormData from 'json-form-data'
 import createValidationError from '@/utils/createValidationError'
 
 export default {
-  table (axios) {
+  list (axios) {
     return axios.get('/api/teacher/tasks')
       .then(response => response.data.data)
   },

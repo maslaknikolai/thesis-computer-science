@@ -7,7 +7,10 @@ function updateSchoolClassData (workUUID, data) {
   const index = db.getIndex('/schoolClasses', workUUID, 'uuid')
   let schoolClassRaw = db.getData(`/schoolClasses[${index}]`)
 
-  schoolClassRaw = { ...schoolClassRaw, ...data }
+  schoolClassRaw = {
+    ...schoolClassRaw,
+    ...data
+  }
 
   db.push(`/schoolClasses[${index}]`, schoolClassRaw, true)
 }

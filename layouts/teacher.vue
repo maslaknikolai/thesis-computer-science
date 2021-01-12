@@ -84,6 +84,11 @@ export default {
           icon: 'mdi-account',
           title: 'Обучающиеся',
           to: '/teacher/students'
+        },
+        {
+          icon: 'mdi-book-open-page-variant-outline',
+          title: 'Уроки',
+          to: '/teacher/lessons'
         }
       ]
     }

@@ -43,7 +43,7 @@ export default {
   layout: 'teacher',
 
   async asyncData ({ $axios, store }) {
-    const tasks = await TasksService.table($axios)
+    const tasks = await TasksService.list($axios)
 
     return {
       tasks
@@ -74,7 +74,7 @@ export default {
   methods: {
     async removeTask (task) {
       await TasksService.remove(this.$axios, task.uuid)
-      this.tasks = await TasksService.table(this.$axios)
+      this.tasks = await TasksService.list(this.$axios)
     }
   }
 }
