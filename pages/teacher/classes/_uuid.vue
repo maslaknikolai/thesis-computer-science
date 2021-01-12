@@ -22,10 +22,10 @@
         </v-card-title>
 
         <v-card-text>
-          Ученики:
+          Обучающиеся:
           <v-data-table
             :headers="[
-              { text: 'ФИО ученика', 'value': 'name' },
+              { text: 'ФИО Обучающегося', 'value': 'name' },
             ]"
             :items="schoolClass.students"
           >

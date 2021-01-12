@@ -43,7 +43,7 @@
           Работы:
           <v-data-table
             :headers="[
-              { text: 'Ученик', 'value': 'student' },
+              { text: 'ФИО обучающегося', 'value': 'student' },
               { text: 'Класс', 'value': 'schoolClass' },
               { text: 'Оценка', 'value': 'score' },
               { text: 'Работа', value: 'uuid' }

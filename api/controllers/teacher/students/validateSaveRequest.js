@@ -8,22 +8,22 @@ export default function validateSaveRequest (requestBody, requestType = 'store')
   }
 
   if (!requestBody.name) {
-    errors.name.push('Укажите ФИО ученика')
+    errors.name.push('Укажите ФИО обучающегося')
     result = false
   }
 
   if (!requestBody.schoolClassUUID) {
-    errors.schoolClassUUID.push('Укажите в каком классе ученик')
+    errors.schoolClassUUID.push('Укажите в каком классе обучающийся')
     result = false
   }
 
   if (!requestBody.login) {
-    errors.login.push('Укажите логин ученика')
+    errors.login.push('Укажите логин обучающегося')
     result = false
   }
 
   if (requestType === 'store' && !requestBody.password) {
-    errors.password.push('Укажите пароль для кабинета ученика')
+    errors.password.push('Укажите пароль для кабинета обучающегося')
     result = false
   }
 

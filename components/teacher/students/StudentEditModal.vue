@@ -5,7 +5,7 @@
   >
     <v-card>
       <v-card-title>
-        {{ isEditing ? 'Редактировать данные ученика' : 'Добавить ученика' }}
+        {{ isEditing ? 'Редактировать данные обучающегося' : 'Добавить обучающегося' }}
       </v-card-title>
 
       <v-card-text>
@@ -29,20 +29,20 @@
         <v-text-field
           v-model="formData.name"
           :error-messages="errors.name"
-          label="ФИО ученика"
+          label="ФИО обучающегося"
         />
 
         <v-text-field
           v-model="formData.login"
           :error-messages="errors.login"
-          label="Логин для кабинета ученика"
+          label="Логин для кабинета обучающегося"
         />
 
         <v-text-field
           v-model="formData.password"
           :error-messages="errors.password"
           type="password"
-          label="Пароль от кабинета ученика"
+          label="Пароль от кабинета обучающегося"
         />
       </v-card-text>
 

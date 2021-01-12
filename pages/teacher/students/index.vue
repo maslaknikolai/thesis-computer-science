@@ -8,9 +8,9 @@
 
       <v-card>
         <v-card-title class="justify-space-between">
-          Ученики
+          Обучающиеся
           <v-btn @click="$refs.studentEditModal.Open()">
-            Добавить ученика
+            Добавить обучающегося
           </v-btn>
         </v-card-title>
 
@@ -43,7 +43,7 @@
               small
               class="mr-2"
               @click="$confirm(
-                'Вы действительно хотите удалить ученика? Все его работы будут также удалены',
+                'Вы действительно хотите удалить обучающегося? Все его работы будут также удалены',
                 () => remove(item)
               )"
             >
@@ -78,7 +78,7 @@ export default {
   data: () => ({
     headers: [
       {
-        text: 'ФИО ученика',
+        text: 'ФИО обучающегося',
         value: 'name'
       },
       {

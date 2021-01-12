@@ -82,7 +82,7 @@ export default {
         },
         {
           icon: 'mdi-account',
-          title: 'Ученики',
+          title: 'Обучающиеся',
           to: '/teacher/students'
         }
       ]
