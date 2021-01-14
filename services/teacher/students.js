@@ -5,8 +5,8 @@ export default {
     return axios.get('/api/teacher/students')
       .then(response => response.data.data)
   },
-  show (axios, workUUID) {
-    return axios.get(`api/teacher/students/${workUUID}`)
+  show (axios, studentUUID) {
+    return axios.get(`api/teacher/students/${studentUUID}`)
       .then(response => response.data.data)
   },
   store (axios, formData) {

@@ -7,6 +7,8 @@ export default function table (req, res) {
     data: lessons.map(lesson => ({
       uuid: lesson.uuid,
       name: lesson.name,
+      date: lesson.date,
+      duration: lesson.duration,
       schoolClasses: lesson
         .getSchoolClasses()
         .map(schoolClass => ({

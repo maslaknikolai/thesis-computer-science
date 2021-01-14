@@ -1,9 +1,17 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
+      <LessonEditModal
+        ref="lessonEditModal"
+        @saved="updateTable"
+      />
+
       <v-card>
         <v-card-title class="justify-space-between">
           Уроки
+          <v-btn @click="$refs.lessonEditModal.Open()">
+            Добавить урок
+          </v-btn>
         </v-card-title>
 
         <v-data-table
@@ -36,9 +44,14 @@
 
 <script>
 import LessonsService from '@/services/teacher/lessons'
+import LessonEditModal from '@/components/teacher/lessons/LessonEditModal.vue'
 
 export default {
   layout: 'teacher',
+
+  components: {
+    LessonEditModal
+  },
 
   async asyncData ({ $axios, store }) {
     const lessons = await LessonsService.list($axios)
@@ -57,6 +70,14 @@ export default {
       {
         text: 'Для классов',
         value: 'schoolClasses'
+      },
+      {
+        text: 'Дата проведения',
+        value: 'date'
+      },
+      {
+        text: 'Продолжительность, минут',
+        value: 'duration'
       }
     ]
   }),

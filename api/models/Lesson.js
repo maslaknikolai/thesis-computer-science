@@ -1,16 +1,21 @@
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 
 export default function createLesson ({
   uuid,
   name,
-  forSchoolClasses
+  forSchoolClasses,
+  date,
+  duration
 }) {
   return {
     uuid,
     name,
     forSchoolClasses,
+    date: moment(date).format('DD.MM.YYYY HH:mm:ss'),
+    duration,
 
     getSchoolClasses () {
       return forSchoolClasses.map(
@@ -45,11 +50,15 @@ export function findLesson (data) {
 
 export function storeLesson ({
   name,
+  date,
+  duration,
   forSchoolClasses
 }) {
   const lesson = {
     uuid: uuidv4(),
     name,
+    date,
+    duration,
     forSchoolClasses
   }
 

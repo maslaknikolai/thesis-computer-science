@@ -21,6 +21,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.6.5",
     "crypto": "^1.0.1",
+    "date-fns": "^2.16.1",
     "file-type": "^16.0.1",
     "json-form-data": "^1.7.2",
     "jsonwebtoken": "^8.5.1",
