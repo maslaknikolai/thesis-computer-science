@@ -19,7 +19,11 @@
           :items="lessons"
         >
           <template #item.name="{ item }">
-            {{ item.name }}
+            <router-link
+              :to="`/teacher/lessons/${item.uuid}`"
+            >
+              {{ item.name }}
+            </router-link>
           </template>
 
           <template #item.schoolClasses="{ item }">

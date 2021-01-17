@@ -3,12 +3,25 @@ import moment from 'moment'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 
+function updateLessonData (lessonUUID, data) {
+  const index = db.getIndex('/lessons', lessonUUID, 'uuid')
+  let lessonRaw = db.getData(`/lessons[${index}]`)
+
+  lessonRaw = {
+    ...lessonRaw,
+    ...data
+  }
+
+  db.push(`/lessons[${index}]`, lessonRaw, true)
+}
+
 export default function createLesson ({
   uuid,
   name,
   forSchoolClasses,
   date,
-  duration
+  duration,
+  presentStudents
 }) {
   return {
     uuid,
@@ -16,6 +29,7 @@ export default function createLesson ({
     forSchoolClasses,
     date: moment(date).format('DD.MM.YYYY HH:mm:ss'),
     duration,
+    presentStudents,
 
     getSchoolClasses () {
       return forSchoolClasses.map(
@@ -23,6 +37,21 @@ export default function createLesson ({
           uuid: schoolClassUUID
         })
       )
+    },
+
+    markStudentPresence (studentUUID) {
+      const newPresentStudents = [
+        ...presentStudents,
+        studentUUID
+      ]
+      updateLessonData(uuid, {
+        presentStudents: newPresentStudents
+      })
+      this.presentStudents = newPresentStudents
+    },
+
+    checkStudentPresent (studentUUID) {
+      return presentStudents.includes(studentUUID)
     }
   }
 }
@@ -59,7 +88,8 @@ export function storeLesson ({
     name,
     date,
     duration,
-    forSchoolClasses
+    forSchoolClasses,
+    presentStudents: []
   }
 
   db.push('/lessons[]', lesson, true)

@@ -133,7 +133,8 @@
             "forSchoolClasses": [
                 "1",
                 "2"
-            ]
+            ],
+            "presentStudents": []
         }
     ]
 }

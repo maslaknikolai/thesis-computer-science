@@ -17,36 +17,59 @@
 
     <v-card>
       <v-card-title>
-        {{ student.name }}
+        {{ lesson.name }}
       </v-card-title>
 
-      <v-card-subtitle>
-        Класс:
-
-        <router-link :to="`/teacher/classes/${student.schoolClass.uuid}`">
-          {{ student.schoolClass.name }}
-        </router-link>
-      </v-card-subtitle>
-
       <v-card-text>
+        <div>
+          Классы:
+
+          <span
+            v-for="(schoolClass, i) in lesson.schoolClasses"
+            :key="schoolClass.uuid"
+          >
+            <router-link
+              :to="`/teacher/classes/${schoolClass.uuid}`"
+            >
+              {{ schoolClass.name }}
+            </router-link>
+
+            <template v-if="i !== lesson.schoolClasses.length - 1">, </template>
+          </span>
+        </div>
+
+        <div>
+          Дата проведения:
+          {{ lesson.date }}
+        </div>
+
+        <div>
+          Продолжительность:
+          {{ lesson.duration }} мин.
+        </div>
+
         <v-data-table
           :headers="[
-            { text: 'Задание', 'value': 'task' },
-            { text: 'Оценка', 'value': 'score' },
-            { text: 'Работа', value: 'uuid' },
+            { text: 'Студент', 'value': 'student' },
+            { text: 'Класс', 'value': 'schoolClass' },
+            { text: 'Присутствует', value: 'isPresent' },
           ]"
-          :items="student.works"
+          :items="lesson.students"
         >
-          <template #item.uuid="{ item }">
-            <router-link :to="`/teacher/works/${item.uuid}`">
-              Посмотреть
+          <template #item.student="{ item }">
+            <router-link :to="`/teacher/student/${item.uuid}`">
+              {{ item.name }}
             </router-link>
           </template>
 
-          <template #item.task="{ item }">
-            <router-link :to="`/teacher/tasks/${item.task.uuid}`">
-              {{ item.task.name }}
+          <template #item.schoolClass="{ item }">
+            <router-link :to="`/teacher/classes/${item.schoolClass.uuid}`">
+              {{ item.schoolClass.name }}
             </router-link>
+          </template>
+
+          <template #item.isPresent="{ item }">
+            {{ item.isPresent ? 'Да' : '-' }}
           </template>
         </v-data-table>
       </v-card-text>
@@ -55,20 +78,20 @@
 </template>
 
 <script>
-import StudentsService from '~/services/teacher/students'
+import LessonsService from '@/services/teacher/lessons'
 
 export default {
   layout: 'teacher',
 
   async asyncData ({ $axios, params }) {
-    const student = await StudentsService.show($axios, params.uuid)
+    const lesson = await LessonsService.show($axios, params.uuid)
 
     return {
-      student
+      lesson
     }
   },
   data: () => ({
-    student: null
+    lesson: null
   })
 }
 </script>
