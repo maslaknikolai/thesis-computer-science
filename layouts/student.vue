@@ -74,6 +74,11 @@ export default {
           icon: 'mdi-format-list-checkbox',
           title: 'Задания',
           to: '/student/tasks'
+        },
+        {
+          icon: 'mdi-book-open-page-variant-outline',
+          title: 'Уроки',
+          to: '/student/lessons'
         }
       ]
     }

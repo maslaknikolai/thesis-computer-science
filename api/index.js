@@ -24,10 +24,12 @@ import storeTask from './controllers/teacher/tasks/store'
 import removeTask from './controllers/teacher/tasks/remove'
 import studentTasks from './controllers/student/tasks/list'
 import showStudentTask from './controllers/student/tasks/show'
+import studentLessons from './controllers/student/lessons/list'
 import submitStudentTaskWork from './controllers/student/tasks/submitWork'
 import allWorks from './controllers/teacher/works/list'
 import getWork from './controllers/teacher/works/show'
 import setWorkScore from './controllers/teacher/works/setWorkScore'
+import checkInOnLesson from './controllers/student/lessons/checkInOnLesson'
 
 const app = express()
 
@@ -75,5 +77,7 @@ app.put('/teacher/classes/:uuid', updateSchoolClass)
 app.get('/student/tasks', studentTasks)
 app.get('/student/tasks/:uuid', showStudentTask)
 app.post('/student/tasks/:uuid', submitStudentTaskWork)
+app.get('/student/lessons/', studentLessons)
+app.post('/student/lessons/:uuid/check-in', checkInOnLesson)
 
 export default app

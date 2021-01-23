@@ -52,7 +52,7 @@
           :headers="[
             { text: 'Студент', 'value': 'student' },
             { text: 'Класс', 'value': 'schoolClass' },
-            { text: 'Присутствует', value: 'isPresent' },
+            { text: 'Присутствует', value: 'isCheckedIn' },
           ]"
           :items="lesson.students"
         >
@@ -68,8 +68,8 @@
             </router-link>
           </template>
 
-          <template #item.isPresent="{ item }">
-            {{ item.isPresent ? 'Да' : '-' }}
+          <template #item.isCheckedIn="{ item }">
+            {{ item.isCheckedIn ? 'Да' : '-' }}
           </template>
         </v-data-table>
       </v-card-text>

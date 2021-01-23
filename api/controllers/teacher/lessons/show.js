@@ -30,7 +30,7 @@ export default function show (req, res) {
                   uuid: schoolClass.uuid,
                   name: schoolClass.name
                 },
-                isPresent: lesson.checkStudentPresent(student.uuid)
+                isCheckedIn: lesson.checkStudentCheckedIn(student.uuid)
               }))
             ]
           }, [])

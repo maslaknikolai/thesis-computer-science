@@ -3,6 +3,7 @@ import passwordHash from 'password-hash'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
+import { allLessons } from './Lesson'
 
 function updateUserData (workUUID, data) {
   const index = db.getIndex('/users', workUUID, 'uuid')
@@ -46,6 +47,13 @@ function createStudent ({
     getWorks () {
       return getAllWorks()
         .filter(work => work.studentUUID === uuid)
+    },
+
+    getLessons () {
+      return allLessons()
+        .filter(
+          lesson => lesson.forSchoolClasses.includes(schoolClassUUID)
+        )
     },
 
     setLogin (login) {

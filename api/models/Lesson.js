@@ -21,7 +21,7 @@ export default function createLesson ({
   forSchoolClasses,
   date,
   duration,
-  presentStudents
+  checkedInStudents
 }) {
   return {
     uuid,
@@ -29,7 +29,7 @@ export default function createLesson ({
     forSchoolClasses,
     date: moment(date).format('DD.MM.YYYY HH:mm:ss'),
     duration,
-    presentStudents,
+    checkedInStudents,
 
     getSchoolClasses () {
       return forSchoolClasses.map(
@@ -39,19 +39,19 @@ export default function createLesson ({
       )
     },
 
-    markStudentPresence (studentUUID) {
-      const newPresentStudents = [
-        ...presentStudents,
+    checkInStudent (studentUUID) {
+      const newCheckedInStudents = [
+        ...checkedInStudents,
         studentUUID
       ]
       updateLessonData(uuid, {
-        presentStudents: newPresentStudents
+        checkedInStudents: newCheckedInStudents
       })
-      this.presentStudents = newPresentStudents
+      this.checkedInStudents = newCheckedInStudents
     },
 
-    checkStudentPresent (studentUUID) {
-      return presentStudents.includes(studentUUID)
+    checkStudentCheckedIn (studentUUID) {
+      return checkedInStudents.includes(studentUUID)
     }
   }
 }
@@ -89,7 +89,7 @@ export function storeLesson ({
     date,
     duration,
     forSchoolClasses,
-    presentStudents: []
+    checkedInStudents: []
   }
 
   db.push('/lessons[]', lesson, true)
