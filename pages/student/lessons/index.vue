@@ -12,20 +12,34 @@
         >
           <template #item.actions="{ item }">
             <v-btn
-              v-if="!item.isCheckedIn"
+              v-if="!item.isCheckedIn && getLessonDateStatus(item) === 'now'"
               small
               @click="checkIn(item)"
             >
               Отметиться на уроке
             </v-btn>
 
-            <template v-else>
-              Вы присутствуете
+            <template v-if="item.isCheckedIn">
+              Вы посетили урок
             </template>
           </template>
 
           <template #item.duration="{ item }">
             {{ item.duration }} мин.
+          </template>
+
+          <template #item.date="{ item }">
+            <template v-if="getLessonDateStatus(item) === 'future'">
+              Урок пройдет {{ item.date }}
+            </template>
+
+            <template v-if="getLessonDateStatus(item) === 'done'">
+              Урок закончился {{ item.date }}
+            </template>
+
+            <template v-if="getLessonDateStatus(item) === 'now'">
+              Урок идет
+            </template>
           </template>
         </v-data-table>
       </v-card>
@@ -35,6 +49,7 @@
 
 <script>
 import LessonsService from '@/services/student/lessons'
+import moment from 'moment'
 export default {
   layout: 'student',
 
@@ -53,7 +68,7 @@ export default {
         value: 'name'
       },
       {
-        text: 'Дата начала',
+        text: 'Время',
         value: 'date'
       },
       {
@@ -70,6 +85,23 @@ export default {
     async checkIn (lesson) {
       await LessonsService.checkIn(this.$axios, lesson.uuid)
       this.lessons = await LessonsService.index(this.$axios)
+    },
+    getLessonDateStatus (lesson) {
+      const currentTs = new Date().valueOf()
+      const startTs = moment(lesson.date, 'DD.MM.YYYY HH:mm:ss').valueOf()
+      const durationTs = lesson.duration * 1000 * 60
+
+      const fromStartTs = currentTs - startTs
+
+      if (fromStartTs < 0) {
+        return 'future'
+      }
+
+      if (fromStartTs > durationTs) {
+        return 'done'
+      }
+
+      return 'now'
     }
   }
 }
