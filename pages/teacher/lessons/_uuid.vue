@@ -4,7 +4,7 @@
       <v-flex shrink>
         <v-btn
           text
-          to="/teacher/students"
+          to="/teacher/lessons"
         >
           <v-icon left>
             mdi-chevron-left
@@ -50,7 +50,7 @@
 
         <v-data-table
           :headers="[
-            { text: 'Студент', 'value': 'student' },
+            { text: 'Обучающийся', 'value': 'student' },
             { text: 'Класс', 'value': 'schoolClass' },
             { text: 'Присутствует', value: 'isCheckedIn' },
           ]"

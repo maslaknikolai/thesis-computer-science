@@ -53,7 +53,7 @@ export default {
         value: 'task'
       },
       {
-        text: 'Студент',
+        text: 'Обучающийся',
         value: 'student'
       },
       {
