@@ -40,6 +40,19 @@
               <template v-if="i !== item.schoolClasses.length - 1">, </template>
             </span>
           </template>
+
+          <template #item.actions="{ item }">
+            <v-icon
+              small
+              class="mr-2"
+              @click="$confirm(
+                'Вы действительно хотите удалить урок?',
+                () => removeLesson(item)
+              )"
+            >
+              mdi-delete
+            </v-icon>
+          </template>
         </v-data-table>
       </v-card>
     </v-col>
@@ -82,12 +95,21 @@ export default {
       {
         text: 'Продолжительность, минут',
         value: 'duration'
+      },
+      {
+        text: 'Действия',
+        value: 'actions',
+        width: '100px'
       }
     ]
   }),
   methods: {
     async updateTable () {
       this.lessons = await LessonsService.list(this.$axios)
+    },
+    async removeLesson (lesson) {
+      await LessonsService.remove(this.$axios, lesson.uuid)
+      this.updateTable()
     }
   }
 }

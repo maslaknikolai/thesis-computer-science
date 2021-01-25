@@ -39,6 +39,11 @@ export default function createLesson ({
       )
     },
 
+    remove () {
+      const index = db.getIndex('/lessons', uuid, 'uuid')
+      db.delete(`/lessons[${index}]`, true)
+    },
+
     checkInStudent (studentUUID) {
       const newCheckedInStudents = [
         ...checkedInStudents,

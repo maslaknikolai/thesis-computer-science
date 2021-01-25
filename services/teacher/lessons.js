@@ -27,7 +27,7 @@ export default {
     })
       .catch(createValidationError)
   },
-  remove (axios, uuid) {
-    return axios.delete(`/api/teacher/lessons/${uuid}`)
+  remove (axios, lessonUUID) {
+    return axios.delete(`/api/teacher/lessons/${lessonUUID}`)
   }
 }
