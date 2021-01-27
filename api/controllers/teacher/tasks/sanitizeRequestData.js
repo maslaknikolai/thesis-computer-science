@@ -3,7 +3,10 @@ export default function sanitizeRequestData (requestBody) {
     name: requestBody.name,
     file: requestBody.file,
     type: requestBody.type,
-    forSchoolClasses: requestBody.forSchoolClasses
+    forSchoolClasses: requestBody.forSchoolClasses || [],
+
+    isIndividual: !!requestBody.isIndividual,
+    forStudents: requestBody.forStudents || []
   }
 
   if (requestBody.type === 'test') {

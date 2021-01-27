@@ -32,7 +32,6 @@ export default function show (req, res) {
           name: task.name,
           file: task.file,
           type: task.type,
-          forSchoolClasses: task.forSchoolClasses,
           questions: task.questions
         }
       })()

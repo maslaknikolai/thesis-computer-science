@@ -4,6 +4,7 @@ import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
 import { allLessons } from './Lesson'
+import { allTasks } from './Task'
 
 function updateUserData (workUUID, data) {
   const index = db.getIndex('/users', workUUID, 'uuid')
@@ -54,6 +55,17 @@ function createStudent ({
         .filter(
           lesson => lesson.forSchoolClasses.includes(schoolClassUUID)
         )
+    },
+
+    getTasks () {
+      return [
+        ...this.getSchoolClass().getTasks(),
+        ...this.getIndividualTasks()
+      ]
+    },
+
+    getIndividualTasks () {
+      return allTasks().filter(task => task.isIndividual && task.forStudents.includes(uuid))
     },
 
     setLogin (login) {

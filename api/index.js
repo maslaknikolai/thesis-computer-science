@@ -21,7 +21,7 @@ import createLessons from './controllers/teacher/lessons/store'
 import showLesson from './controllers/teacher/lessons/show'
 import removeLesson from './controllers/teacher/lessons/remove'
 import showTeacherTask from './controllers/teacher/tasks/show'
-import storeTask from './controllers/teacher/tasks/store'
+import createTask from './controllers/teacher/tasks/store'
 import removeTask from './controllers/teacher/tasks/remove'
 import studentTasks from './controllers/student/tasks/list'
 import showStudentTask from './controllers/student/tasks/show'
@@ -60,7 +60,7 @@ app.delete('/teacher/lessons/:uuid', removeLesson)
 app.post('/teacher/lessons', createLessons)
 app.get('/teacher/tasks', teacherTasks)
 app.get('/teacher/tasks/:uuid', showTeacherTask)
-app.post('/teacher/tasks', upload.single('file'), storeTask)
+app.post('/teacher/tasks', upload.single('file'), createTask)
 app.delete('/teacher/tasks/:uuid', removeTask)
 app.get('/teacher/works', allWorks)
 app.get('/teacher/works/:uuid', getWork)

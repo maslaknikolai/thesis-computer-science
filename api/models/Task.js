@@ -3,6 +3,7 @@ import moment from 'moment'
 import db from '../dbProvider'
 import { findSchoolClass } from './SchoolClass'
 import { getAllWorks } from './Work'
+import { findUser } from './User'
 
 function updateTaskData (taskUUID, data) {
   const index = db.getIndex('/tasks', taskUUID, 'uuid')
@@ -21,7 +22,9 @@ export default function createTask ({
   forSchoolClasses,
   questions,
   user,
-  createdAt
+  createdAt,
+  isIndividual,
+  forStudents
 }) {
   return {
     uuid,
@@ -32,6 +35,8 @@ export default function createTask ({
     questions,
     user,
     createdAt: moment(createdAt).format('DD.MM.YYYY HH:mm:ss'),
+    isIndividual,
+    forStudents,
 
     getWorks () {
       return getAllWorks()
@@ -41,6 +46,12 @@ export default function createTask ({
     getSchoolClasses () {
       return forSchoolClasses.map(
         schoolClassUUID => findSchoolClass({ uuid: schoolClassUUID })
+      )
+    },
+
+    getForStudents () {
+      return forStudents.map(
+        studentUUID => findUser({ uuid: studentUUID })
       )
     },
 
@@ -87,7 +98,9 @@ export function storeTask ({
   type,
   forSchoolClasses,
   questions,
-  user
+  user,
+  isIndividual,
+  forStudents
 }) {
   const task = {
     uuid: uuidv4(),
@@ -97,6 +110,8 @@ export function storeTask ({
     forSchoolClasses,
     questions,
     user: user.uuid,
+    isIndividual,
+    forStudents,
     createdAt: new Date().valueOf()
   }
 

@@ -25,9 +25,9 @@ export default function createSchoolClass ({
 
     getTasks () {
       return allTasks()
-        .filter(task => task.forSchoolClasses.includes(
-          uuid
-        ))
+        .filter((task) => {
+          return task.forSchoolClasses.includes(uuid)
+        })
     },
 
     getStudents () {

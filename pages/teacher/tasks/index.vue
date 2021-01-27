@@ -61,6 +61,10 @@ export default {
         value: 'forSchoolClasses'
       },
       {
+        text: 'Для студентов',
+        value: 'forStudents'
+      },
+      {
         text: 'Дата создания',
         value: 'createdAt'
       },

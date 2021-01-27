@@ -6,7 +6,13 @@
       label="Название задания"
     />
 
+    <v-checkbox
+      v-model="formData.isIndividual"
+      label="Индивидуальное"
+    />
+
     <SchoolClassesLoader
+      v-if="!formData.isIndividual"
       v-slot="{
         schoolClasses,
         schoolClassesLoading
@@ -23,6 +29,25 @@
         label="Для каких классов"
       />
     </SchoolClassesLoader>
+
+    <StudentsLoader
+      v-else
+      v-slot="{
+        students,
+        studentsLoading
+      }"
+    >
+      <v-select
+        v-model="formData.forStudents"
+        multiple
+        :items="students"
+        item-value="uuid"
+        item-text="name"
+        :error-messages="errors ? errors.forStudents : null"
+        :loading="studentsLoading"
+        label="Для каких студентов"
+      />
+    </StudentsLoader>
 
     <v-file-input
       v-model="formData.file"
@@ -48,13 +73,15 @@
 
 <script>
 import SchoolClassesLoader from '@/components/teacher/SchoolClassesLoader.vue'
+import StudentsLoader from '@/components/teacher/StudentsLoader.vue'
 import createQuestion from './createQuestion'
 import TestQuestions from './TestQuestions.vue'
 
 export default {
   components: {
     TestQuestions,
-    SchoolClassesLoader
+    SchoolClassesLoader,
+    StudentsLoader
   },
   props: {
     task: {
@@ -72,6 +99,8 @@ export default {
       file: null,
       forSchoolClasses: '',
       type: 'test', // test | text
+      isIndividual: false,
+      forStudents: [],
       questions: [
         createQuestion()
       ]

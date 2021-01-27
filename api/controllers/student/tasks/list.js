@@ -5,7 +5,7 @@ export default async function list (req, res) {
   const student = await getCurrentUser(req)
 
   res.json({
-    data: student.getSchoolClass().getTasks()
+    data: student.getTasks()
       .map(task => ({
         uuid: task.uuid,
         type: task.type,

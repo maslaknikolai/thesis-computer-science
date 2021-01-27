@@ -40,6 +40,8 @@
             "forSchoolClasses": [
                 "1"
             ],
+            "isIndividual": false,
+            "forStudents": [],
             "questions": [
                 {
                     "text": "Кто крестил Русь",

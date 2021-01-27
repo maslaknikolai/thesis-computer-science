@@ -4,6 +4,8 @@ export default function validateSaveRequest (requestBody) {
     name: [],
     type: [],
     forSchoolClasses: [],
+    isIndividual: [],
+    forStudents: [],
     questions: {
       errors: []
     }
@@ -14,7 +16,7 @@ export default function validateSaveRequest (requestBody) {
     result = false
   }
 
-  if (!requestBody.forSchoolClasses || !requestBody.forSchoolClasses.length) {
+  if (!requestBody.isIndividual && (!requestBody.forSchoolClasses || !requestBody.forSchoolClasses.length)) {
     errors.forSchoolClasses.push('Укажите для каких классов предназначено задание')
     result = false
   }
@@ -24,8 +26,8 @@ export default function validateSaveRequest (requestBody) {
     result = false
   }
 
-  if (!['test', 'text'].includes(requestBody.type)) {
-    errors.type.push('Укажите корректный тип задания')
+  if (requestBody.isIndividual && (!requestBody.forStudents || !requestBody.forStudents.length)) {
+    errors.forStudents.push('Укажите для каких студентов предназначено задание')
     result = false
   }
 

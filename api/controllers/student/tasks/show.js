@@ -9,7 +9,9 @@ export default function show (req, res) {
       name: task.name,
       file: task.file ? `/api/task-files/${task.file}` : task.file,
       type: task.type,
+      isIndividual: task.isIndividual,
       forSchoolClasses: task.forSchoolClasses,
+      forStudents: task.forStudents,
       createdAt: task.createdAt,
       questions: task.questions ? task.questions.map(taskQuestion => ({
         text: taskQuestion.text,

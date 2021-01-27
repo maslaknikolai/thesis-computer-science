@@ -22,21 +22,42 @@
         </v-card-title>
 
         <v-card-text>
-          Для классов:
-          <span
-            v-for="(schoolClass, i) in task.forSchoolClasses"
-            :key="schoolClass.uuid"
-          >
-            <router-link
-              :to="`/teacher/classes/${schoolClass.uuid}`"
-            >
-              {{ schoolClass.name }}
-            </router-link>
+          <div v-if="task.isIndividual">
+            Для студентов:
 
-            <template v-if="i !== task.forSchoolClasses.length - 1">
-              ,
-            </template>
-          </span>
+            <span
+              v-for="(student, i) in task.forStudents"
+              :key="student.uuid"
+            >
+              <router-link
+                :to="`/teacher/students/${student.uuid}`"
+              >
+                {{ student.name }}
+              </router-link>
+
+              <template v-if="i !== task.forStudents.length - 1">
+                ,
+              </template>
+            </span>
+          </div>
+
+          <div v-else>
+            Для классов:
+            <span
+              v-for="(schoolClass, i) in task.forSchoolClasses"
+              :key="schoolClass.uuid"
+            >
+              <router-link
+                :to="`/teacher/classes/${schoolClass.uuid}`"
+              >
+                {{ schoolClass.name }}
+              </router-link>
+
+              <template v-if="i !== task.forSchoolClasses.length - 1">
+                ,
+              </template>
+            </span>
+          </div>
 
           <br>
 
