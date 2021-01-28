@@ -45,7 +45,7 @@
         item-text="name"
         :error-messages="errors ? errors.forStudents : null"
         :loading="studentsLoading"
-        label="Для каких студентов"
+        label="Выберите обучающихся"
       />
     </StudentsLoader>
 

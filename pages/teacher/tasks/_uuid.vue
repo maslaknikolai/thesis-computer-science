@@ -23,7 +23,7 @@
 
         <v-card-text>
           <div v-if="task.isIndividual">
-            Для студентов:
+            Индивидуально для:
 
             <span
               v-for="(student, i) in task.forStudents"

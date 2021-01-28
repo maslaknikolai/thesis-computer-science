@@ -61,7 +61,7 @@ export default {
         value: 'forSchoolClasses'
       },
       {
-        text: 'Для студентов',
+        text: 'Индивидуально для',
         value: 'forStudents'
       },
       {

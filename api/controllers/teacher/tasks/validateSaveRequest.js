@@ -27,7 +27,7 @@ export default function validateSaveRequest (requestBody) {
   }
 
   if (requestBody.isIndividual && (!requestBody.forStudents || !requestBody.forStudents.length)) {
-    errors.forStudents.push('Укажите для каких студентов предназначено задание')
+    errors.forStudents.push('Укажите обучающихся для которых предназначено индивидуальное задание')
     result = false
   }
 
